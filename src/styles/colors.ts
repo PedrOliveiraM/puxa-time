@@ -10,17 +10,38 @@ export const colors = {
     900: '#212121', // Texto escuro principal
     950: '#121212', // Fundo muito escuro
   },
+  blue: {
+    300: '#0D65D9', // Azul primário (anteriormente listado como verde)
+    900: '#052159', // Azul mais escuro para botões ou destaques
+  },
   green: {
-    300: '#4CAF50', // Verde primário
-    900: '#1B5E20', // Verde mais escuro para botões ou destaques
+    300: '#74A629', // Verde primário (anteriormente listado como azul)
+    900: '#5A8C35', // Verde mais escuro para botões ou destaques
   },
   orange: {
     300: '#FF9800', // Destaques (botões, avisos)
-    900: '#E65100', // Laranja mais escuro para ações importantes
+    900: '#D95436', // Laranja mais escuro para ações importantes
   },
   red: {
     300: '#F44336', // Erros ou avisos
     900: '#B71C1C', // Vermelho mais escuro para ênfase
   },
   white: '#FFFFFF', // Texto em fundos escuros
-};
+  black: '#000000', // Adicionado para completude
+
+  background: '#1E2734',
+  text: {
+    primary: '#FFFFFF',
+    secondary: '#9E9E9E',
+  },
+  input: {
+    background: '#2C3A4B',
+    text: '#FFFFFF',
+    placeholder: '#9E9E9E',
+  },
+  button: {
+    primary: '#0D65D9',
+    secondary: '#5A8C35',
+  },
+  error: '#F44336',
+}
