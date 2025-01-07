@@ -20,6 +20,12 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "suspicious": {
+        "noArrayIndexKey": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      },
       "recommended": true,
       "style": {
         "noNonNullAssertion": "off",
@@ -31,12 +37,6 @@
     "ignore": [
       "node_modules",
       ".history"
-    ],
-    "ignoreUnknown": false
-  },
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
+    ]
   }
 }

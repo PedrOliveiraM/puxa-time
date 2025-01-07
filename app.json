@@ -4,31 +4,32 @@
     "slug": "puxa-time",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "image": "./assets/images/splash-icon.png",
     "scheme": "myapp",
-    "userInterfaceStyle": "dark",
+    "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "@/assets/images/splash-icon.png",
+      "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#09090B"
+      "backgroundColor": "#1E2734"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "@/assets/images/adaptive-icon.png",
-        "backgroundColor": "#09090B"
+        "image": "./assets/images/splash-icon.png",
+        "backgroundColor": "#1E2734"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "@/assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
