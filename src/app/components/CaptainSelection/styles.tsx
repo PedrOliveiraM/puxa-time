@@ -15,7 +15,7 @@ export const s = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    color: colors.text.secondary,
+    color: colors.text.primary,
     marginBottom: 20,
   },
   playerList: {
@@ -42,7 +42,8 @@ export const s = StyleSheet.create({
     marginTop: 20,
   },
   cancelButton: {
-    backgroundColor: colors.button.secondary,
+    backgroundColor: colors.gray[600],
+    borderColor: colors.gray[600],
     marginTop: 20,
   },
   buttonText: {

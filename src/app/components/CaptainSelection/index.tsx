@@ -29,6 +29,10 @@ export function CaptainSelection({
     handleNextStep()
   }
 
+  const checkCaptains = () => {
+    return selectedCaptains.length !== numberOfTeams
+  }
+
   return (
     <View style={s.container}>
       <Text style={s.title}>Selecione os Capitães</Text>
@@ -57,18 +61,14 @@ export function CaptainSelection({
 
       <Button
         onPress={handleConfirm}
-        disabled={selectedCaptains.length !== numberOfTeams}
-        style={s.confirmButton}
+        disabled={checkCaptains()}
+        style={checkCaptains() ? s.cancelButton : s.confirmButton}
         variant="success"
       >
         <Text style={s.buttonText}>Confirmar Capitães</Text>
       </Button>
 
-      <Button
-        onPress={handlePreviousStep}
-        disabled={selectedCaptains.length !== numberOfTeams}
-        style={s.confirmButton}
-      >
+      <Button onPress={handlePreviousStep} style={s.confirmButton}>
         <Text style={s.buttonText}>Voltar</Text>
       </Button>
     </View>

@@ -16,7 +16,7 @@ export const s = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
-    resizeMode: 'contain',
+    objectFit: 'contain',
     marginBottom: 20,
   },
   title: {

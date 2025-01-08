@@ -87,7 +87,7 @@ export function TeamForm({
 
   return (
     <KeyboardAvoidingView
-      style={{ flexGrow: 1 }}
+      style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
     >
@@ -102,6 +102,7 @@ export function TeamForm({
             keyboardShouldPersistTaps="handled"
             contentInset={{ bottom: 100 }} // Ajuste conforme necessário
           >
+            <Text style={s.title}> Informe</Text>
             <View style={s.formContainer}>
               <Text style={s.label}>Quantidade total de jogadores:</Text>
               <TextInput
