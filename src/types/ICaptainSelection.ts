@@ -2,5 +2,6 @@ export interface ICaptainSelectionProps {
   players: string[]
   numberOfTeams: number
   onCaptainsSelected: (captains: string[]) => void
-  handleCancelStepTwo: () => void
+  handlePreviousStep: () => void
+  handleNextStep: () => void
 }

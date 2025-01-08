@@ -7,6 +7,7 @@ export interface ITeamFormProps {
   setNumberOfTeams: (value: number) => void
   setPlayersPerTeam: (value: number) => void
   setPlayerList: (value: string[]) => void
-  handleFinishStepOne: () => void
+  handlePreviousStep?: () => void
+  handleNextStep: () => void
   handleSubmit?: () => void
 }
