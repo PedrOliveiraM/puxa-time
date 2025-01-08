@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native'
 export const s = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.background,
   },
   container: {
     flex: 1,

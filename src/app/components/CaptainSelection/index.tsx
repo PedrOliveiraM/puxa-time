@@ -8,7 +8,8 @@ export function CaptainSelection({
   players,
   numberOfTeams,
   onCaptainsSelected,
-  handleCancelStepTwo,
+  handlePreviousStep,
+  handleNextStep,
 }: ICaptainSelectionProps) {
   const [selectedCaptains, setSelectedCaptains] = useState<string[]>([])
 
@@ -24,6 +25,8 @@ export function CaptainSelection({
     if (selectedCaptains.length === numberOfTeams) {
       onCaptainsSelected(selectedCaptains)
     }
+
+    handleNextStep()
   }
 
   return (
@@ -62,7 +65,7 @@ export function CaptainSelection({
       </Button>
 
       <Button
-        onPress={handleCancelStepTwo}
+        onPress={handlePreviousStep}
         disabled={selectedCaptains.length !== numberOfTeams}
         style={s.confirmButton}
       >
