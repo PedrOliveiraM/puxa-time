@@ -3,11 +3,15 @@ import { StyleSheet } from 'react-native'
 
 export const s = StyleSheet.create({
   container: {
-    flexGrow: 1,
+    flex: 1,
     justifyContent: 'center',
+    paddingHorizontal: 16,
     backgroundColor: colors.background,
   },
   formContainer: {
+    width: '100%',
+    maxWidth: 400,
+    alignSelf: 'center',
     padding: 20,
   },
   label: {
@@ -22,12 +26,11 @@ export const s = StyleSheet.create({
     padding: 12,
     marginBottom: 16,
     color: colors.input.text,
-    minWidth: 200,
+    width: '100%',
   },
   textarea: {
-    minWidth: 200,
-    minHeight: 100, // Altura mínima para o textarea
-    maxHeight: 200, // Altura máxima para evitar "crescimento" excessivo
+    minHeight: 100,
+    maxHeight: 200,
     textAlignVertical: 'top',
   },
   errorText: {
