@@ -16,10 +16,11 @@ type ButtonProps = TouchableOpacityProps & {
 
 type IconProps = {
   icon: React.ComponentType<tablerIconsProps>
+  color?: string
 }
 
-function Icon({ icon: Icon }: IconProps) {
-  return <Icon size={24} />
+function Icon({ icon: Icon, color }: IconProps) {
+  return <Icon size={24} color={color} />
 }
 
 function Button({
@@ -49,7 +50,7 @@ function Button({
       {...rest}
     >
       {isLoading ? (
-        <ActivityIndicator size={'small'} color={colors.gray[900]} />
+        <ActivityIndicator size={'small'} color={colors.gray[100]} />
       ) : (
         children
       )}

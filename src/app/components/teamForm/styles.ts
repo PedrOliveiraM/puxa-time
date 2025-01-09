@@ -23,12 +23,19 @@ export const s = StyleSheet.create({
     color: colors.text.primary,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 8,
     textAlign: 'center',
-    color: colors.text.primary,
+    color: colors.gray[100],
     fontFamily: fontFamily.bold,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 10,
+    gap: 10
   },
   input: {
     backgroundColor: colors.input.background,
@@ -64,4 +71,25 @@ export const s = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
   },
+  playerListContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  buttonPaste: {
+    paddingHorizontal: 15,
+    paddingVertical: 1,
+    borderRadius: 8,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 10,
+  },
+  buttonFooter: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: 10,
+  }
 })

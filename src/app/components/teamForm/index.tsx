@@ -1,12 +1,19 @@
 import { colors } from '@/styles/colors'
 import { ITeamFormProps } from '@/types/ITeamForm'
-import React, { useRef, useState } from 'react'
+import {
+  IconArrowNarrowLeftDashed,
+  IconArrowNarrowRightDashed,
+  IconClipboard,
+  IconPlayFootball,
+} from '@tabler/icons-react-native'
+import * as Clipboard from 'expo-clipboard'
+import React, { useState } from 'react'
 import {
   ActivityIndicator,
-  EmitterSubscription,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
   ScrollView,
   Text,
   TextInput,
@@ -14,7 +21,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import { Loading } from '../loading'
+import { Button } from '../button'
 import { s } from './styles'
 
 export function TeamForm({
@@ -30,7 +37,7 @@ export function TeamForm({
 }: ITeamFormProps) {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-  const scrollViewRef = useRef<ScrollView>(null)
+  const [step, setStep] = useState(1)
 
   const handleSubmit = () => {
     setError('')
@@ -58,26 +65,14 @@ export function TeamForm({
     handleNextStep()
   }
 
-  React.useEffect(() => {
-    let keyboardDidShowListener: EmitterSubscription
-    let keyboardDidHideListener: EmitterSubscription
-
-    if (Platform.OS === 'android') {
-      keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
-        scrollViewRef.current?.scrollToEnd({ animated: true })
-      })
-      keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
-        scrollViewRef.current?.scrollTo({ x: 0, y: 0, animated: true })
-      })
+  const handleNextStepTeam = () => {
+    if (step === 1 && (!playerList.length || !totalPlayers)) {
+      setError('Por favor, preencha a lista de jogadores e a quantidade total.')
+      return
     }
-
-    return () => {
-      if (Platform.OS === 'android') {
-        keyboardDidShowListener.remove()
-        keyboardDidHideListener.remove()
-      }
-    }
-  }, [])
+    setStep(step + 1)
+    setError('')
+  }
 
   const formatPlayerListToArray = (inputList: string[]): string[] => {
     return inputList.map(player => {
@@ -85,83 +80,126 @@ export function TeamForm({
     })
   }
 
+  const handlePaste = async () => {
+    const text = await Clipboard.getStringAsync()
+
+    if (text === '') {
+      alert('Nenhum texto encontrado na área de transferência.')
+      return
+    }
+
+    const numbersOfLines = text.split('\n').length
+    setTotalPlayers(numbersOfLines)
+    setPlayerList(text.split('\n'))
+  }
+
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
-    >
-      {isLoading ? (
-        <Loading />
-      ) : (
+    <SafeAreaView style={{ flex: 1 }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <ScrollView
-            ref={scrollViewRef}
-            contentContainerStyle={s.container}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-            contentInset={{ bottom: 100 }} // Ajuste conforme necessário
-          >
-            <Text style={s.title}> Informe</Text>
+          <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={s.formContainer}>
-              <Text style={s.label}>Quantidade total de jogadores:</Text>
-              <TextInput
-                style={s.input}
-                value={totalPlayers.toString()}
-                onChangeText={text => setTotalPlayers(Number(text))}
-                keyboardType="numeric"
-                placeholder="Ex: 20"
-                placeholderTextColor={colors.input.placeholder}
-              />
+              {step === 1 && (
+                <>
+                  <View style={s.titleContainer}>
+                    <IconPlayFootball size={32} />
+                    <Text style={s.title}>Convocação</Text>
+                  </View>
+                  <View style={s.playerListContainer}>
+                    <Text style={s.label}>Lista de jogadores:</Text>
+                    <Button style={s.buttonPaste} onPress={handlePaste}>
+                      <Button.Icon icon={IconClipboard} color="white" />
+                    </Button>
+                  </View>
 
-              <Text style={s.label}>Número de times:</Text>
-              <TextInput
-                style={s.input}
-                value={numberOfTeams.toString()}
-                onChangeText={text => setNumberOfTeams(Number(text))}
-                keyboardType="numeric"
-                placeholder="Ex: 4"
-                placeholderTextColor={colors.input.placeholder}
-              />
+                  <TextInput
+                    style={[s.input, s.textarea]}
+                    value={playerList.join('\n')}
+                    onChangeText={text => setPlayerList(text.split('\n'))}
+                    placeholder="Cole aqui a lista de jogadores, um por linha"
+                    placeholderTextColor={colors.input.placeholder}
+                    multiline
+                    textAlignVertical="top"
+                  />
 
-              <Text style={s.label}>Jogadores por time:</Text>
-              <TextInput
-                style={s.input}
-                value={playersPerTeam.toString()}
-                onChangeText={text => setPlayersPerTeam(Number(text))}
-                keyboardType="numeric"
-                placeholder="Ex: 5"
-                placeholderTextColor={colors.input.placeholder}
-              />
+                  <Text style={s.label}>Quantidade total de jogadores:</Text>
+                  <TextInput
+                    style={s.input}
+                    value={totalPlayers.toString()}
+                    onChangeText={text => setTotalPlayers(Number(text))}
+                    keyboardType="numeric"
+                    placeholder="Ex: 20"
+                    placeholderTextColor={colors.input.placeholder}
+                  />
 
-              <Text style={s.label}>Lista de jogadores:</Text>
-              <TextInput
-                style={[s.input, s.textarea]}
-                value={playerList.join('\n')}
-                onChangeText={text => setPlayerList(text.split('\n'))}
-                placeholder="Cole aqui a lista de jogadores, um por linha"
-                placeholderTextColor={colors.input.placeholder}
-                multiline
-                textAlignVertical="top"
-              />
+                  {error ? <Text style={s.errorText}>{error}</Text> : null}
 
-              {error ? <Text style={s.errorText}>{error}</Text> : null}
+                  <View style={s.buttonFooter}>
+                    <Button onPress={handleNextStepTeam}>
+                      <Button.Title>Avançar</Button.Title>
+                      <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+                    </Button>
+                  </View>
+                </>
+              )}
 
-              <TouchableOpacity
-                style={[s.button, isLoading && s.buttonDisabled]}
-                onPress={handleSubmit}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <ActivityIndicator color={colors.green[900]} />
-                ) : (
-                  <Text style={s.buttonText}>Formar Times</Text>
-                )}
-              </TouchableOpacity>
+              {step === 2 && (
+                <>
+                  <View style={s.titleContainer}>
+                    <IconPlayFootball size={32} />
+                    <Text style={s.title}>Convocação</Text>
+                  </View>
+                  <Text style={s.label}>Número de times:</Text>
+                  <TextInput
+                    style={s.input}
+                    value={numberOfTeams.toString()}
+                    onChangeText={text => setNumberOfTeams(Number(text))}
+                    keyboardType="numeric"
+                    placeholder="Ex: 4"
+                    placeholderTextColor={colors.input.placeholder}
+                  />
+                  <Text style={s.label}>Jogadores por time:</Text>
+                  <TextInput
+                    style={s.input}
+                    value={playersPerTeam.toString()}
+                    onChangeText={text => setPlayersPerTeam(Number(text))}
+                    keyboardType="numeric"
+                    placeholder="Ex: 5"
+                    placeholderTextColor={colors.input.placeholder}
+                  />
+                  {error ? <Text style={s.errorText}>{error}</Text> : null}
+                  <View style={s.buttonFooter}>
+                    <TouchableOpacity
+                      style={[s.button, isLoading && s.buttonDisabled]}
+                      onPress={handleSubmit}
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <ActivityIndicator color={colors.green[900]} />
+                      ) : (
+                        <View style={s.buttonContent}>
+                          <Text style={s.buttonText}>Escolher os Capitães</Text>
+                          <IconArrowNarrowRightDashed
+                            size={24}
+                            color={colors.text.primary}
+                          />
+                        </View>
+                      )}
+                    </TouchableOpacity>
+                    <Button variant="alert" onPress={() => setStep(step - 1)}>
+                      <Button.Icon icon={IconArrowNarrowLeftDashed} color="white" />
+                      <Button.Title>Voltar</Button.Title>
+                    </Button>
+                  </View>
+                </>
+              )}
             </View>
           </ScrollView>
         </TouchableWithoutFeedback>
-      )}
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
