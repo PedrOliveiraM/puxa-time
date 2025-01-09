@@ -38,4 +38,9 @@ export const s = StyleSheet.create({
     borderColor: colors.button.primary,
     borderWidth: 1,
   },
+  disabled: {
+    backgroundColor: colors.gray[600],
+    borderColor: colors.gray[600],
+    borderWidth: 1,
+  }
 })

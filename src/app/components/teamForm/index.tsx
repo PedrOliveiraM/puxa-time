@@ -10,6 +10,7 @@ import * as Clipboard from 'expo-clipboard'
 import React, { useState } from 'react'
 import {
   ActivityIndicator,
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -70,6 +71,16 @@ export function TeamForm({
       setError('Por favor, preencha a lista de jogadores e a quantidade total.')
       return
     }
+
+    if (!checkPlayers()) {
+      Alert.alert(
+        'Erro',
+        'A quantidade de jogadores informada não corresponde à lista de jogadores.'
+      )
+      setError('Por favor, preencha a lista de jogadores e a quantidade total.')
+      return
+    }
+
     setStep(step + 1)
     setError('')
   }
@@ -91,6 +102,10 @@ export function TeamForm({
     const numbersOfLines = text.split('\n').length
     setTotalPlayers(numbersOfLines)
     setPlayerList(text.split('\n'))
+  }
+
+  const checkPlayers = () => {
+    return totalPlayers !== 0 && playerList.length === totalPlayers
   }
 
   return (
@@ -138,7 +153,10 @@ export function TeamForm({
                   {error ? <Text style={s.errorText}>{error}</Text> : null}
 
                   <View style={s.buttonFooter}>
-                    <Button onPress={handleNextStepTeam}>
+                    <Button
+                      onPress={handleNextStepTeam}
+                      variant={checkPlayers() ? 'success' : 'disabled'}
+                    >
                       <Button.Title>Avançar</Button.Title>
                       <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
                     </Button>
