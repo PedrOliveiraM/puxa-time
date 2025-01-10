@@ -30,7 +30,7 @@ export default function Index() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <LinearGradient
-        colors={['#4c669f', '#3b5998', '#192f6a']}
+        colors={['#3b5998', '#192f6a', '#2C3A4B']}
         style={s.gradientBackground}
       />
       <Animated.View style={[s.container, animatedStyle]}>
