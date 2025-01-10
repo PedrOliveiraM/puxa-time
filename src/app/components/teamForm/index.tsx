@@ -3,7 +3,9 @@ import { ITeamFormProps } from '@/types/ITeamForm'
 import {
   IconArrowNarrowLeftDashed,
   IconArrowNarrowRightDashed,
+  IconBallFootball,
   IconClipboard,
+  IconEraser,
   IconPlayFootball,
 } from '@tabler/icons-react-native'
 import * as Clipboard from 'expo-clipboard'
@@ -11,6 +13,7 @@ import React, { useState } from 'react'
 import {
   ActivityIndicator,
   Alert,
+  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -18,11 +21,11 @@ import {
   ScrollView,
   Text,
   TextInput,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
 import { Button } from '../button'
+import PlayFootballIcon from '../play-football'
 import { s } from './styles'
 
 export function TeamForm({
@@ -119,6 +122,14 @@ export function TeamForm({
     return numberOfTeams !== 0 && playersPerTeam !== 0
   }
 
+  const reset = () => {
+    setTotalPlayers(0)
+    setNumberOfTeams(0)
+    setPlayersPerTeam(0)
+    setPlayerList([])
+    setStep(1)
+  }
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <KeyboardAvoidingView
@@ -131,7 +142,10 @@ export function TeamForm({
               {step === 1 && (
                 <>
                   <View style={s.titleContainer}>
-                    <IconPlayFootball size={32} />
+                    <Image
+                      source={require('@/assets/play-football.png')}
+                      style={s.footballIcon}
+                    />
                     <Text style={s.title}>Convocação</Text>
                   </View>
                   <View style={s.playerListContainer}>
@@ -170,6 +184,10 @@ export function TeamForm({
                     >
                       <Button.Title>Avançar</Button.Title>
                       <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+                    </Button>
+                    <Button onPress={reset} variant="alert">
+                      <Button.Title>Limpar</Button.Title>
+                      <Button.Icon icon={IconEraser} color="white" />
                     </Button>
                   </View>
                 </>

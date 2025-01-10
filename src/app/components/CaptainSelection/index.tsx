@@ -1,6 +1,7 @@
 import { ICaptainSelectionProps } from '@/types/ICaptainSelection'
+import { IconArrowNarrowLeftDashed, IconPlayFootball } from '@tabler/icons-react-native'
 import React, { useState } from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import { Button } from '../button'
 import { s } from './styles'
 
@@ -35,7 +36,12 @@ export function CaptainSelection({
 
   return (
     <View style={s.container}>
-      <Text style={s.title}>Selecione os Capitães</Text>
+      <View style={s.titleContainer}>
+        <Image source={require('@/assets/play-football.png')} style={s.footballIcon} />
+        {/* <IconPlayFootball size={32} /> */}
+        <Text style={s.title}>Selecione os Capitães</Text>
+      </View>
+
       <Text style={s.subtitle}>
         Escolha {numberOfTeams} jogadores para serem capitães
       </Text>
@@ -68,7 +74,8 @@ export function CaptainSelection({
       </Button>
 
       <Button onPress={handlePreviousStep} style={s.confirmButton}>
-        <Text style={s.buttonText}>Voltar</Text>
+        <Button.Icon icon={IconArrowNarrowLeftDashed} color="white" />
+        <Button.Title>Voltar</Button.Title>
       </Button>
     </View>
   )
