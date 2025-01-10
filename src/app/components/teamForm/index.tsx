@@ -44,6 +44,13 @@ export function TeamForm({
     setError('')
     setIsLoading(true)
 
+    if (!checkTeams()) {
+      setError('Por favor, preencha todos os campos.')
+      setIsLoading(false)
+      Alert.alert('Erro', 'Por favor, preencha todos os campos.')
+      return
+    }
+
     if (!totalPlayers || !numberOfTeams || !playersPerTeam || !playerList.length) {
       setError('Por favor, preencha todos os campos.')
       setIsLoading(false)
@@ -95,7 +102,7 @@ export function TeamForm({
     const text = await Clipboard.getStringAsync()
 
     if (text === '') {
-      alert('Nenhum texto encontrado na área de transferência.')
+      Alert.alert('Ops', 'Nenhum texto encontrado na área de transferência.')
       return
     }
 
@@ -106,6 +113,10 @@ export function TeamForm({
 
   const checkPlayers = () => {
     return totalPlayers !== 0 && playerList.length === totalPlayers
+  }
+
+  const checkTeams = () => {
+    return numberOfTeams !== 0 && playersPerTeam !== 0
   }
 
   return (
@@ -190,23 +201,18 @@ export function TeamForm({
                   />
                   {error ? <Text style={s.errorText}>{error}</Text> : null}
                   <View style={s.buttonFooter}>
-                    <TouchableOpacity
-                      style={[s.button, isLoading && s.buttonDisabled]}
-                      onPress={handleSubmit}
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <ActivityIndicator color={colors.green[900]} />
-                      ) : (
-                        <View style={s.buttonContent}>
-                          <Text style={s.buttonText}>Escolher os Capitães</Text>
-                          <IconArrowNarrowRightDashed
-                            size={24}
-                            color={colors.text.primary}
-                          />
-                        </View>
-                      )}
-                    </TouchableOpacity>
+                    {isLoading ? (
+                      <ActivityIndicator color={colors.green[900]} />
+                    ) : (
+                      <Button
+                        onPress={handleSubmit}
+                        variant={checkTeams() ? 'success' : 'disabled'}
+                      >
+                        <Button.Title>Avançar</Button.Title>
+                        <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+                      </Button>
+                    )}
+
                     <Button variant="alert" onPress={() => setStep(step - 1)}>
                       <Button.Icon icon={IconArrowNarrowLeftDashed} color="white" />
                       <Button.Title>Voltar</Button.Title>
