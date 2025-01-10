@@ -25,7 +25,6 @@ export const s = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 8,
     textAlign: 'center',
     color: colors.gray[100],
     fontFamily: fontFamily.bold,
@@ -91,5 +90,10 @@ export const s = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     gap: 10,
+  },
+  footballIcon: {
+    width: 32,
+    height: 32,
+    color: colors.blue[300],
   }
 })

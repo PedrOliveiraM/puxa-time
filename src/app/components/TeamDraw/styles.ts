@@ -12,13 +12,10 @@ export const s = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.text.primary,
-    marginBottom: 20,
     textAlign: 'center',
   },
   drawButton: {
-    backgroundColor: colors.button.primary,
     padding: 15,
-    borderRadius: 8,
     marginBottom: 20,
   },
   buttonText: {
@@ -31,7 +28,7 @@ export const s = StyleSheet.create({
     flex: 1,
   },
   teamCard: {
-    backgroundColor: colors.gray[600],
+    backgroundColor: colors.input.background,
     borderRadius: 8,
     padding: 15,
     marginBottom: 15,
@@ -44,7 +41,39 @@ export const s = StyleSheet.create({
   },
   playerName: {
     fontSize: 16,
-    color: colors.text.secondary,
+    color: colors.gray[100],
     marginBottom: 5,
   },
+  captainName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: colors.orange[300],
+    marginBottom: 5,
+  },
+  iconCaptain: {
+    color: colors.orange[300], // Exemplo de cor para capitães
+    marginRight: 8,
+  },
+  iconPlayer: {
+    color: colors.button.primary, // Exemplo de cor para jogadores normais
+    marginRight: 8,
+    fontWeight: 'bold',
+  },
+  playerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+    paddingBottom: 25,
+    gap: 10,
+  },
+  footballIcon: {
+    width: 32,
+    height: 32,
+  }
 })

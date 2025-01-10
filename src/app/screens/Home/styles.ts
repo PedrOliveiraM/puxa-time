@@ -33,4 +33,7 @@ export const s = StyleSheet.create({
     color: colors.gray[100],
     marginBottom: 40,
   },
+  loadingIndicator: {
+    position: 'absolute',
+  },
 })

@@ -11,7 +11,6 @@ export const s = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.text.primary,
-    marginBottom: 10,
   },
   subtitle: {
     fontSize: 16,
@@ -50,5 +49,17 @@ export const s = StyleSheet.create({
     color: colors.text.primary,
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+    paddingBottom: 25,
+    gap: 10,
+  },
+  footballIcon: {
+    width: 32,
+    height: 32,
   },
 })
