@@ -24,7 +24,6 @@ export default function Home() {
   const handleCaptainsSelected = (captains: string[]) => {
     setCaptainsList(captains)
     handleNextStep()
-    console.log('Capitães selecionados:', captains)
   }
 
   const handleNextStep = () => {

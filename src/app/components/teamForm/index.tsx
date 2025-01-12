@@ -65,12 +65,6 @@ export function TeamForm({
 
     setTimeout(() => {
       setIsLoading(false)
-      console.log('Dados processados:', {
-        totalPlayers,
-        numberOfTeams,
-        playersPerTeam,
-        playerList: formattedPlayers,
-      })
     }, 2000)
 
     handleNextStep()
@@ -159,7 +153,7 @@ export function TeamForm({
                     style={[s.input, s.textarea]}
                     value={playerList.join('\n')}
                     onChangeText={text => setPlayerList(text.split('\n'))}
-                    placeholder="Cole aqui a lista de jogadores, um por linha"
+                    placeholder="Cole aqui a lista de jogadores"
                     placeholderTextColor={colors.input.placeholder}
                     multiline
                     textAlignVertical="top"

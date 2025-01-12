@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "image": "./assets/images/splash-icon.png",
         "backgroundColor": "#1E2734"
-      }
+      },
+      "package": "com.pedrodev77.puxatime"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +34,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c9103839-a5c5-4dff-abb1-4bff8c8b7abc"
+      }
     }
   }
 }

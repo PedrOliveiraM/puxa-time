@@ -35,8 +35,7 @@ export default function Index() {
       />
       <Animated.View style={[s.container, animatedStyle]}>
         <Image source={require('@/assets/Logo.png')} style={s.logo} />
-        <Text style={s.title}>BEM-VINDO</Text>
-        <Text style={s.description}>Vamos logo puxar os times?</Text>
+        <Text style={s.title}>Vamos puxar os times?</Text>
         <Button style={s.button} onPress={() => router.navigate('/screens/Home/Home')}>
           <Button.Title>Começar</Button.Title>
         </Button>
