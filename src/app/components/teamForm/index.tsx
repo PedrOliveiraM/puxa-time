@@ -190,7 +190,10 @@ export function TeamForm({
               {step === 2 && (
                 <>
                   <View style={s.titleContainer}>
-                    <IconPlayFootball size={32} />
+                    <Image
+                      source={require('@/assets/play-football.png')}
+                      style={s.footballIcon}
+                    />
                     <Text style={s.title}>Convocação</Text>
                   </View>
                   <Text style={s.label}>Número de times:</Text>
