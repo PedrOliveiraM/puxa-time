@@ -3,10 +3,8 @@ import { ITeamFormProps } from '@/types/ITeamForm'
 import {
   IconArrowNarrowLeftDashed,
   IconArrowNarrowRightDashed,
-  IconBallFootball,
   IconClipboard,
   IconEraser,
-  IconPlayFootball,
 } from '@tabler/icons-react-native'
 import * as Clipboard from 'expo-clipboard'
 import React, { useState } from 'react'
@@ -25,7 +23,6 @@ import {
   View,
 } from 'react-native'
 import { Button } from '../button'
-import PlayFootballIcon from '../play-football'
 import { s } from './styles'
 
 export function TeamForm({
