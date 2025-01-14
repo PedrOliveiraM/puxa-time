@@ -17,13 +17,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-/*
-export interface Settings {
-  numberOfTeams: number
-  playersPerTeam: number
-  drawMode: 'balanced' | 'random' | 'ordered' | 'prioritized'
-}
-*/
 
 export default function InfoTeams() {
   const { players, setSettings } = useGame()
@@ -41,7 +34,7 @@ export default function InfoTeams() {
     setSettings({
       numberOfTeams,
       playersPerTeam,
-      drawMode: 'random',
+      modeSort: 'RANDOM',
     })
 
     console.log('players', players)
