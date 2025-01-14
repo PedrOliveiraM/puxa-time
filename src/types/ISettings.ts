@@ -1,5 +1,7 @@
 export interface Settings {
   numberOfTeams: number
   playersPerTeam: number
-  drawMode: 'balanced' | 'random' | 'ordered' | 'prioritized'
+  modeSort: Modes
 }
+
+type Modes = 'RANDOM' | 'ARRIVAL' | 'PRIORITY' | 'SKILL' 

@@ -10,7 +10,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [settings, setSettings] = useState<Settings>({
     numberOfTeams: 2,
     playersPerTeam: 0,
-    drawMode: 'balanced',
+    modeSort: 'RANDOM',
   })
   const [captains, setCaptains] = useState<Player[]>([])
   const [results, setResults] = useState<string[]>([])
