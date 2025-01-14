@@ -10,6 +10,7 @@ import {
   IconEraser,
 } from '@tabler/icons-react-native'
 import * as Clipboard from 'expo-clipboard'
+import { router } from 'expo-router'
 import React, { useState } from 'react'
 import {
   Alert,
@@ -89,6 +90,8 @@ export default function PlayersScreen() {
 
     const convertedPlayers = transformPlayers(formattedPlayers)
     setPlayers(convertedPlayers)
+
+    router.push('/infoTeams')
   }
 
   const reset = () => {
@@ -145,6 +148,7 @@ export default function PlayersScreen() {
               <Button
                 onPress={handleSubmit}
                 variant={checkPlayers() ? 'success' : 'disabled'}
+                disabled={!checkPlayers()}
                 style={s.button}
               >
                 <Button.Title>Avançar</Button.Title>

@@ -26,7 +26,6 @@ export default function Layout() {
     <GameProvider>
       <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
         <Stack>
-          {/* Configuração do header */}
           <Stack.Screen
             name="index"
             options={{
@@ -37,6 +36,15 @@ export default function Layout() {
           />
           <Stack.Screen
             name="players"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
+            }}
+          />
+          <Stack.Screen
+            name="infoTeams"
             options={{
               title: '',
               headerShown: true,
