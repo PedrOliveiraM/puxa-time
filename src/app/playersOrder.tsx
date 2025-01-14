@@ -1,4 +1,5 @@
 import { Button } from '@/components/button'
+import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.playersOrder'
 import { TEST_PLAYERS } from '@/test/player.test'
 import { Player } from '@/types/IPlayer'
@@ -7,10 +8,8 @@ import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 
-const initialPlayers: Player[] = TEST_PLAYERS
-
 export default function PlayersOrder() {
-  const [players, setPlayers] = useState<Player[]>(initialPlayers)
+  const { players, setPlayers } = useGame()
   const [currentPosition, setCurrentPosition] = useState<number>(1)
   const [showAdvanceButton, setShowAdvanceButton] = useState<boolean>(false)
 
@@ -58,7 +57,7 @@ export default function PlayersOrder() {
 
   // Reseta as posições dos jogadores
   const handleResetPlayers = () => {
-    setPlayers(initialPlayers)
+    setPlayers(players)
     setCurrentPosition(1)
   }
 

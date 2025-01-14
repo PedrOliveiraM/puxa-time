@@ -9,7 +9,7 @@ const TeamCard = ({ teamName, players }: TeamCardProps) => {
       <View style={styles.playersContainer}>
         {players.map((player, index) => (
           <Text key={index} style={styles.player}>
-            {player.name} {player.isCaptain && '🦸'}
+            {player.name} {player.isCaptain && '🛡️'}
           </Text>
         ))}
       </View>

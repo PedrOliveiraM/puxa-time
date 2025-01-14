@@ -2,49 +2,64 @@ import { Button } from '@/components/button'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.captains'
 import { Player } from '@/types/IPlayer'
+import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useState } from 'react'
 import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Captains() {
-  const { settings, players } = useGame() // Pegando os times e jogadores do contexto
-  const [selectedPlayers, setSelectedPlayers] = useState<Player[]>([])
+  const { settings, players, setCaptains, setPlayers } = useGame() // Pegando times e jogadores do contexto
+  const [selectedCaptainNames, setSelectedCaptainNames] = useState<string[]>([])
 
-  // Calculando quantos capitães são necessários
+  // Número de capitães necessários com base nas configurações
   const numCaptainsRequired = settings.numberOfTeams
 
   // Função para alternar a seleção do capitão
   const handleSelectCaptain = (playerName: string) => {
-    setSelectedPlayers(prevSelected => {
-      // Verifica se o jogador já está selecionado como capitão
-      const isAlreadyCaptain = prevSelected.some(player => player.name === playerName)
+    setSelectedCaptainNames(prevSelected => {
+      const isAlreadyCaptain = prevSelected.includes(playerName)
 
       if (isAlreadyCaptain) {
-        // Remover da seleção de capitães
-        return prevSelected.filter(player => player.name !== playerName)
+        return prevSelected.filter(name => name !== playerName)
       }
-      // Adicionar o jogador à seleção de capitães se não tiver atingido o limite
+
       if (prevSelected.length < numCaptainsRequired) {
-        const selectedPlayer = players.find(player => player.name === playerName)
-        if (selectedPlayer) {
-          return [...prevSelected, { ...selectedPlayer, isCaptain: true }]
-        }
+        return [...prevSelected, playerName]
       }
 
       return prevSelected
     })
   }
 
+  // Enviar capitães para o contexto e prosseguir para a próxima tela
+  const handleSubmit = () => {
+    const updatedPlayers = players.map(player => ({
+      ...player,
+      isCaptain: selectedCaptainNames.includes(player.name), // Define como true para capitães selecionados
+    }))
+
+    const selectedCaptains = updatedPlayers.filter(player => player.isCaptain)
+
+    if (selectedCaptains.length !== numCaptainsRequired) {
+      console.warn(
+        'Número de capitães selecionados não corresponde ao esperado:',
+        selectedCaptains
+      )
+      return
+    }
+
+    setPlayers(updatedPlayers) // Atualiza os jogadores no contexto
+    setCaptains(selectedCaptains) // Atualiza os capitães no contexto
+    router.push('/drawerTeams') // Navega para a próxima tela
+  }
+
+  // Ordenar jogadores para exibir os capitães selecionados primeiro
   const sortedPlayers = [
-    ...selectedPlayers,
-    ...players.filter(
-      player => !selectedPlayers.some(selected => selected.name === player.name)
-    ),
+    ...selectedCaptainNames.map(name => players.find(player => player.name === name)!),
+    ...players.filter(player => !selectedCaptainNames.includes(player.name)),
   ]
 
-  const handleSubmit = () => {
-    router.push('/infoTeams')
-  }
+  const isReadyToProceed = selectedCaptainNames.length === numCaptainsRequired
 
   return (
     <SafeAreaView style={styles.container}>
@@ -55,6 +70,7 @@ export default function Captains() {
           <Text style={styles.title}>Seleção de Capitães</Text>
         </View>
         <Text style={styles.subTitle}>Escolha {numCaptainsRequired} Capitães</Text>
+
         <FlatList
           data={sortedPlayers}
           keyExtractor={(item, index) => index.toString()}
@@ -62,24 +78,29 @@ export default function Captains() {
             <TouchableOpacity
               style={[
                 styles.playerItem,
-                item.isCaptain ? styles.selectedItem : undefined,
+                selectedCaptainNames.includes(item.name)
+                  ? styles.selectedItem
+                  : undefined,
               ]}
               onPress={() => handleSelectCaptain(item.name)}
             >
               <Text style={styles.playerText}>
-                {item.isCaptain ? '🛡️ ' : ''}
+                {selectedCaptainNames.includes(item.name) ? '🛡️ ' : ''}
                 {item.name}
               </Text>
             </TouchableOpacity>
           )}
         />
+
         <View style={styles.buttonContainer}>
-          {/* Mostrar botão de avançar somente se a quantidade de capitães estiver completa */}
-          {selectedPlayers.length === numCaptainsRequired && (
-            <Button onPress={() => handleSubmit}>
-              <Button.Title>Avançar</Button.Title>
-            </Button>
-          )}
+          <Button
+            onPress={handleSubmit}
+            variant={isReadyToProceed ? 'success' : 'disabled'}
+            disabled={!isReadyToProceed}
+          >
+            <Button.Title>Avançar</Button.Title>
+            <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+          </Button>
         </View>
       </View>
     </SafeAreaView>

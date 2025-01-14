@@ -1,4 +1,5 @@
 import { IconProps } from "@tabler/icons-react-native";
+import { Modes } from "./ISettings";
 
 export interface ModeSort {
   RANDOM: string;
@@ -9,7 +10,7 @@ export interface ModeSort {
 
 export type ModeSortProps = {
   id: number;
-  modeKey: string;
+  modeKey: Modes;
   description: string;
   label: string;
   icon: React.ComponentType<IconProps>;

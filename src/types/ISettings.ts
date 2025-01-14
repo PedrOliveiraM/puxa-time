@@ -4,4 +4,4 @@ export interface Settings {
   modeSort: Modes
 }
 
-type Modes = 'RANDOM' | 'ARRIVAL' | 'PRIORITY' | 'SKILL' 
+export type Modes = 'RANDOM' | 'ARRIVAL' | 'PRIORITY' | 'SKILL' | 'NULL'

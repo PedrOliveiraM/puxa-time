@@ -4,7 +4,6 @@ import {
   IconFlagFilled,
   IconFlameFilled,
   IconProps,
-  IconStar,
   IconStarFilled,
 } from '@tabler/icons-react-native';
 

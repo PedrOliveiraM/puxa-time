@@ -1,4 +1,5 @@
 import { CardProps } from '@/types/ICardProps'
+import { Modes } from '@/types/ISettings'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { s } from './styles'
 
@@ -10,7 +11,7 @@ export function Card({
   description,
   setSelectedMode,
 }: CardProps) {
-  const handleSelectedMode = (modeKey: string) => {
+  const handleSelectedMode = (modeKey: Modes) => {
     setSelectedMode(modeKey)
   }
 

@@ -3,17 +3,22 @@ import { Card } from '@/components/card'
 import { Loading } from '@/components/loading'
 import { modeSortArray } from '@/constants/modeSort'
 import { routes } from '@/constants/routesSort'
+import { useGame } from '@/context/GameContext'
 import { s } from '@/styles/styles.modeSort'
+import { Modes } from '@/types/ISettings'
 import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import { useState } from 'react'
 import { Alert, FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function ModeSort() {
+  const { setSettings } = useGame()
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [selectedMode, setSelectedMode] = useState<string>('')
+  const [selectedMode, setSelectedMode] = useState<Modes>('NULL')
 
-  const checkMode = () => selectedMode !== ''
+  const checkMode = () => {
+    return selectedMode !== 'NULL'
+  }
 
   const handleSubmit = () => {
     if (!checkMode()) {
@@ -27,6 +32,11 @@ export default function ModeSort() {
     }, 1000)
 
     console.log('selectedMode:', selectedMode)
+
+    setSettings(prev => ({
+      ...prev,
+      modeSort: selectedMode,
+    }))
 
     const route = routes[selectedMode]
 
