@@ -5,4 +5,5 @@ export interface Player {
   skill?: SkillLevel | undefined
   priority?: boolean
   position?: number
+  isCaptain?: boolean
 }
