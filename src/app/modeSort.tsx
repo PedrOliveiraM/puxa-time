@@ -2,8 +2,10 @@ import { Button } from '@/components/button'
 import { Card } from '@/components/card'
 import { Loading } from '@/components/loading'
 import { modeSortArray } from '@/constants/modeSort'
+import { routes } from '@/constants/routesSort'
 import { s } from '@/styles/styles.modeSort'
 import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
+import { router } from 'expo-router'
 import { useState } from 'react'
 import { Alert, FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
@@ -25,7 +27,14 @@ export default function ModeSort() {
     }, 1000)
 
     console.log('selectedMode:', selectedMode)
-    // redirecionar
+
+    const route = routes[selectedMode]
+
+    if (route) {
+      router.push(route)
+    } else {
+      console.warn('Modo de sorteio inválido:', selectedMode)
+    }
   }
 
   return (
