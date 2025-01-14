@@ -38,21 +38,24 @@ export default function PlayersScreen() {
     }
 
     const numbersOfLines = text.split('\n').length
-    const formattedPlayers = formatPlayerListToArray(text.split('\n'))
+    const players = text.split('\n')
+
+    const formattedPlayers = formatPlayerListToArray(players)
     setTotalPlayers(numbersOfLines)
     setPlayerList(formattedPlayers)
   }
 
   const formatPlayerListToArray = (inputList: string[]): string[] => {
     return inputList.map(player => {
-      return player.replace(/^\d+-\s*/, '').trim()
+      return player.replace(/^\d+[.-]\s*/, '').trim()
     })
   }
 
   const transformPlayers = (playerNames: string[]): Player[] => {
     return playerNames.map(name => ({
       name,
-      skill: undefined, // Definindo o skill como undefined
+      skill: undefined,
+      priority: false,
     }))
   }
 
@@ -125,7 +128,9 @@ export default function PlayersScreen() {
             <TextInput
               style={[s.input, s.textarea]}
               value={playerList.join('\n')}
-              onChangeText={text => setPlayerList(text.split('\n'))}
+              onChangeText={text =>
+                setPlayerList(formatPlayerListToArray(text.split('\n')))
+              }
               placeholder="Cole aqui a lista de jogadores"
               placeholderTextColor={colors.input.placeholder}
               multiline

@@ -51,6 +51,8 @@ export default function InfoTeams() {
     setTimeout(() => {
       setIsLoading(false)
     }, 1000)
+
+    router.push('/modeSort')
   }
 
   const reset = () => {
