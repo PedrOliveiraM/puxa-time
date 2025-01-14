@@ -1,3 +1,6 @@
+import { HeaderBackButton } from '@/components/header-back-button'
+import { Loading } from '@/components/loading'
+import { GameProvider } from '@/context/GameContext'
 import { colors } from '@/styles/colors'
 import {
   Rubik_400Regular,
@@ -7,13 +10,9 @@ import {
   useFonts,
 } from '@expo-google-fonts/rubik'
 import { Stack } from 'expo-router'
-import React, { useCallback } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { Loading } from './components/loading'
 
-const gestureHandlerStyle = { flex: 1 }
-
-const Layout: React.FC = () => {
+export default function Layout() {
   const [fontsLoaded] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -21,21 +20,32 @@ const Layout: React.FC = () => {
     Rubik_700Bold,
   })
 
-  const screenOptions = useCallback(
-    () => ({
-      headerShown: false,
-      contentStyle: { backgroundColor: colors.background },
-    }),
-    []
-  )
-
   if (!fontsLoaded) return <Loading />
 
   return (
-    <GestureHandlerRootView style={gestureHandlerStyle}>
-      <Stack screenOptions={screenOptions()} />
-    </GestureHandlerRootView>
+    <GameProvider>
+      <GestureHandlerRootView style={{ flex: 1, backgroundColor: colors.background }}>
+        <Stack>
+          {/* Configuração do header */}
+          <Stack.Screen
+            name="index"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+            }}
+          />
+          <Stack.Screen
+            name="players"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
+            }}
+          />
+        </Stack>
+      </GestureHandlerRootView>
+    </GameProvider>
   )
 }
-
-export default Layout

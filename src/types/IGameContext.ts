@@ -10,4 +10,6 @@ export interface GameContextType {
   setCaptains: React.Dispatch<React.SetStateAction<Player[]>>
   results: string[]
   setResults: React.Dispatch<React.SetStateAction<string[]>>
+  totalPlayers: number
+  setTotalPlayers: React.Dispatch<React.SetStateAction<number>>
 }

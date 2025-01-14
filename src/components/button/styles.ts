@@ -25,7 +25,6 @@ export const s = StyleSheet.create({
   },
   alert: {
     backgroundColor: colors.orange[300],
-    borderColor: colors.orange[900],
     borderWidth: 1,
   },
   danger: {

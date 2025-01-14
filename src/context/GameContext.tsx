@@ -14,6 +14,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   })
   const [captains, setCaptains] = useState<Player[]>([])
   const [results, setResults] = useState<string[]>([])
+  const [totalPlayers, setTotalPlayers] = useState(0)
 
   return (
     <GameContext.Provider
@@ -26,6 +27,8 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setCaptains,
         results,
         setResults,
+        totalPlayers,
+        setTotalPlayers,
       }}
     >
       {children}

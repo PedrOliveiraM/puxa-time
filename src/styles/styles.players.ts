@@ -55,9 +55,6 @@ export const s = StyleSheet.create({
     marginBottom: 16,
   },
   button: {
-    backgroundColor: colors.button.primary,
-    padding: 16,
-    borderRadius: 8,
     alignItems: 'center',
     width: '100%',
     minWidth: '100%',
@@ -95,5 +92,11 @@ export const s = StyleSheet.create({
     width: 32,
     height: 32,
     color: colors.blue[300],
+  },
+  logo: {
+    width: 200,
+    height: 200,
+    alignSelf: 'center',
+    marginBottom: 20,
   }
 })
