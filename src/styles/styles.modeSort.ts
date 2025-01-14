@@ -52,6 +52,7 @@ export const s = StyleSheet.create({
     gap: 10,
   },
   buttonContainer: {
+    marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
