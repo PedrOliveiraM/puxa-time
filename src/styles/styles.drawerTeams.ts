@@ -25,32 +25,6 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.bold,
     paddingBottom: 10,
   },
-  playerItem: {
-    padding: 16,
-    marginBottom: 8,
-    backgroundColor: colors.input.background,
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#ddd',
-  },
-  selectedItem: {
-    backgroundColor: colors.button.primary,
-    borderColor: colors.button.secondary,
-  },
-  playerText: {
-    fontSize: 18,
-    color: colors.text.primary,
-  },
-  buttonContainer: {
-    marginTop: 16,
-    gap: 8,
-  },
-  logo: {
-    width: 180,
-    height: 180,
-    alignSelf: 'center',
-    marginBottom: 5,
-  },
   randomIcon: {
     width: 32,
     height: 32,
@@ -63,8 +37,15 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
     gap: 10
   },
-  mainContainer: {
-    flexDirection: 'column',
-    gap: 16,
-  }
+  logo: {
+    width: 180,
+    height: 180,
+    alignSelf: 'center',
+    marginBottom: 5,
+  },
+  teamsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+  },
 })
