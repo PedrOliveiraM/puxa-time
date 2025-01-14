@@ -52,6 +52,15 @@ export default function Layout() {
               header: () => <HeaderBackButton />,
             }}
           />
+          <Stack.Screen
+            name="modeSort"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
+            }}
+          />
         </Stack>
       </GestureHandlerRootView>
     </GameProvider>

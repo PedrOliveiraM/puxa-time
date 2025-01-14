@@ -5,7 +5,8 @@ import { StyleSheet } from 'react-native'
 export const s = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    paddingTop: 40,
+    flexDirection: 'column',
     paddingHorizontal: 20,
     backgroundColor: colors.background,
   },
@@ -21,7 +22,8 @@ export const s = StyleSheet.create({
     height: 200,
     alignSelf: 'center',
     marginBottom: 20,
-  }, footballIcon: {
+  },
+  footballIcon: {
     width: 32,
     height: 32,
     color: colors.blue[300],
