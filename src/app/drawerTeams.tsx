@@ -1,5 +1,7 @@
 import { Button } from '@/components/button'
+import { Card } from '@/components/card'
 import TeamCard from '@/components/team-card'
+import { modeSortArray } from '@/constants/modeSort'
 import { useGame } from '@/context/GameContext'
 import {
   drawTeamsByArrival,
@@ -9,8 +11,9 @@ import {
 } from '@/services/drawFunctions'
 import { styles } from '@/styles/styles.drawerTeams'
 import { Team } from '@/types/ITeams'
+import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
 import { useEffect, useState } from 'react'
-import { Image, SafeAreaView, Text, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function DrawerTeams() {
   const { players, settings, captains } = useGame()
@@ -75,20 +78,28 @@ export default function DrawerTeams() {
         <Button onPress={() => handleSortTeams()}>
           <Button.Title>Sortear</Button.Title>
         </Button>
-
-        {/* Exibindo os times com o TeamCard */}
-        <View style={styles.teamsContainer}>
-          {teams.map((team, index) => (
+        <FlatList
+          data={teams}
+          renderItem={({ item, index }) => (
             <TeamCard
               key={index}
-              teamName={team.name}
+              teamName={item.name}
               captainName={
-                team.players.find(player => player.isCaptain)?.name || 'Sem Capitão'
+                item.players.find(player => player.isCaptain)?.name || 'Sem Capitão'
               }
-              players={team.players}
+              players={item.players}
             />
-          ))}
-        </View>
+          )}
+          keyExtractor={item => item.name}
+          numColumns={1}
+          contentContainerStyle={styles.teamsContainer}
+        />
+
+        <Button>
+          <Button.Title>Avançar</Button.Title>
+          <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+        </Button>
+        
       </View>
     </SafeAreaView>
   )
