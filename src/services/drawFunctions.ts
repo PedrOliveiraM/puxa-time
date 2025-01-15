@@ -1,12 +1,11 @@
 import { Player } from "@/types/IPlayer";
 import { Team } from "@/types/ITeams";
-
 // Função para embaralhar um array (para o sorteio aleatório)
 const shuffleArray = (array: Player[]): Player[] => {
   return [...array].sort(() => Math.random() - 0.5);
 };
 
-// Função para distribuir jogadores para times aleatoriamente
+// Função para distribuir jogadores para times aleatoriamente e equilibradamente
 export const drawTeamsRandomly = (
   players: Player[],
   numTeams: number,
@@ -28,10 +27,13 @@ export const drawTeamsRandomly = (
     players: captains[index] ? [captains[index]] : [],
   }));
 
-  // Distribuir os jogadores restantes aleatoriamente
-  nonCaptains.forEach((player, index) => {
-    const teamIndex = index % numTeams; // Distribuição cíclica
-    teams[teamIndex].players.push(player);
+  // Distribuir os jogadores restantes de forma equilibrada
+  nonCaptains.forEach(player => {
+    // Encontra o primeiro time com menos jogadores que o limite
+    const team = teams.find(team => team.players.length < playersPerTeam);
+    if (team) {
+      team.players.push(player);
+    }
   });
 
   // Valida se os times não excedem o limite de jogadores por time
