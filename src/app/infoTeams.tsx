@@ -31,6 +31,12 @@ export default function InfoTeams() {
   const handleSubmit = () => {
     if (!checkTeams()) return Alert.alert('Ops', 'Preencha todos os campos.')
 
+    if (numberOfTeams * playersPerTeam < players.length)
+      return Alert.alert(
+        'Ops',
+        'Alguns jogadores ficarão de fora.Pois a quantidade de jogadores é maior que a quantidade de jogadores por time.'
+      )
+
     setSettings({
       numberOfTeams,
       playersPerTeam,
