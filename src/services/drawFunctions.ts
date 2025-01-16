@@ -71,13 +71,20 @@ export const drawTeamsByArrival = (
     players: captains[index] ? [captains[index]] : [], // Adiciona o capitão ao time
   }));
 
-  // Distribui os demais jogadores nos times de forma cíclica
-  nonCaptains.forEach((player, index) => {
-    const teamIndex = index % numTeams; // Distribuição cíclica
+  // Preenche os times sequencialmente com os não capitães
+  let teamIndex = 0; // Índice do time atual
+  for (const player of nonCaptains) {
+    // Adiciona o jogador ao time atual
     teams[teamIndex].players.push(player);
-  });
 
-  // Verifica se os times não excedem o limite de jogadores por time
+    // Avança para o próximo time se o atual estiver cheio
+    if (teams[teamIndex].players.length === playersPerTeam) {
+      teamIndex++;
+      if (teamIndex >= numTeams) break; // Para se todos os times estiverem preenchidos
+    }
+  }
+
+  // Emite um aviso se algum time exceder o limite de jogadores
   teams.forEach(team => {
     if (team.players.length > playersPerTeam) {
       console.warn(`O time ${team.name} excedeu o limite de jogadores por time.`);
@@ -93,51 +100,54 @@ export const drawTeamsByPriority = (
   numTeams: number,
   playersPerTeam: number
 ): Team[] => {
-  const priorityPlayers = players.filter(player => player.priority);  // Filtra os jogadores com prioridade
-  const nonPriorityPlayers = players.filter(player => !player.priority); // Resto dos jogadores
+  const captains = players.filter(player => player.isCaptain); // Filtra os capitães
+  const priorityPlayers = players.filter(player => player.priority && !player.isCaptain); // Filtra os jogadores com prioridade (exceto capitães)
+  const nonPriorityPlayers = players.filter(player => !player.priority && !player.isCaptain); // Resto dos jogadores
 
-  const sortedPriorityPlayers = shuffleArray(priorityPlayers);
-  const sortedNonPriorityPlayers = shuffleArray(nonPriorityPlayers);
+  // Verifica se há capitães suficientes para os times
+  if (captains.length !== numTeams) {
+    console.warn('Número insuficiente de capitães para os times.');
+    return [];
+  }
 
-  // Cria a estrutura dos times
+  // Embaralha os jogadores com prioridade e os sem prioridade
+  const shuffledPriorityPlayers = shuffleArray(priorityPlayers);
+  const shuffledNonPriorityPlayers = shuffleArray(nonPriorityPlayers);
+
+  // Inicializa os times com os capitães
   const teams: Team[] = Array.from({ length: numTeams }, (_, index) => ({
     name: `Time ${index + 1}`,
-    players: [],
+    players: captains[index] ? [captains[index]] : [], // Adiciona o capitão ao time
   }));
 
-  // Preenche os times com jogadores prioritários, respeitando o número de jogadores por time
-  let i = 0;
-  while (sortedPriorityPlayers.length && teams[i].players.length < playersPerTeam) {
-    teams[i].players.push(sortedPriorityPlayers.pop()!);
-    i = (i + 1) % numTeams;
-  }
-
-  // Preenche os times restantes com jogadores não prioritários, respeitando o número de jogadores por time
-  i = 0;
-  while (sortedNonPriorityPlayers.length && teams[i].players.length < playersPerTeam) {
-    teams[i].players.push(sortedNonPriorityPlayers.pop()!);
-    i = (i + 1) % numTeams;
-  }
-
-  // Caso algum time não tenha atingido o número de jogadores, preenche com jogadores restantes
-  const allPlayers = [...sortedPriorityPlayers, ...sortedNonPriorityPlayers];
-  i = 0;
-  while (allPlayers.length) {
-    if (teams[i].players.length < playersPerTeam) {
-      teams[i].players.push(allPlayers.pop()!);
+  // Preenche os times com jogadores prioritários
+  let teamIndex = 0;
+  while (shuffledPriorityPlayers.length) {
+    if (teams[teamIndex].players.length < playersPerTeam) {
+      teams[teamIndex].players.push(shuffledPriorityPlayers.pop()!);
     }
-    i = (i + 1) % numTeams;
+    teamIndex = (teamIndex + 1) % numTeams;
   }
 
-  // Atribui um capitão a cada time (o primeiro jogador de cada time)
+  // Preenche os times com jogadores não prioritários
+  teamIndex = 0;
+  while (shuffledNonPriorityPlayers.length) {
+    if (teams[teamIndex].players.length < playersPerTeam) {
+      teams[teamIndex].players.push(shuffledNonPriorityPlayers.pop()!);
+    }
+    teamIndex = (teamIndex + 1) % numTeams;
+  }
+
+  // Emite um aviso caso algum time exceda o limite de jogadores
   teams.forEach((team) => {
-    if (team.players.length > 0) {
-      team.players[0].isCaptain = true;
+    if (team.players.length > playersPerTeam) {
+      console.warn(`O time ${team.name} excedeu o limite de jogadores por time.`);
     }
   });
 
   return teams;
-}
+};
+
 
 // Função para distribuir jogadores nos times balanceando pelas habilidades
 export const drawTeamsBySkill = (

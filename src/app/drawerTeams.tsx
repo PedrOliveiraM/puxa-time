@@ -21,6 +21,7 @@ export default function DrawerTeams() {
   const numberOfTeams = settings.numberOfTeams // numero de times
   const playersPerTeam = settings.playersPerTeam // numero de jogadores por time
   const modeSort = settings.modeSort // modo de sorteio
+  const [isVisible, setIsVisible] = useState(false)
   const [teams, setTeams] = useState<Team[]>([])
 
   // Dicionário de sorteios
@@ -58,10 +59,12 @@ export default function DrawerTeams() {
     if (sortFunction) {
       setTeams(sortFunction(players, numberOfTeams, playersPerTeam))
       console.log('if - MODO DE SORTEIO: ', sortFunction)
+      setIsVisible(true)
       return
     }
     setTeams(drawTeamsRandomly(players, numberOfTeams, playersPerTeam))
     console.log('if - MODO DE SORTEIO DEFAULT: ', sortFunction)
+    setIsVisible(true)
   }
 
   return (
@@ -95,11 +98,12 @@ export default function DrawerTeams() {
           contentContainerStyle={styles.teamsContainer}
         />
 
-        <Button>
-          <Button.Title>Avançar</Button.Title>
-          <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
-        </Button>
-        
+        {isVisible && (
+          <Button variant="success">
+            <Button.Title>Avançar</Button.Title>
+            <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+          </Button>
+        )}
       </View>
     </SafeAreaView>
   )
