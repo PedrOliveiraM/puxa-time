@@ -1,75 +1,40 @@
-import { Button } from '@/components/button'
-import { useGame } from '@/context/GameContext'
-import { styles } from '@/styles/styles.playersOrder'
-import { TEST_PLAYERS } from '@/test/player.test'
-import { Player } from '@/types/IPlayer'
-import { IconArrowNarrowRightDashed, IconRefresh } from '@tabler/icons-react-native'
-import { router } from 'expo-router'
-import React, { useEffect, useState } from 'react'
-import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { Button } from '@/components/button';
+import { useGame } from '@/context/GameContext';
+import { styles } from '@/styles/styles.playersOrder';
+import { IconArrowNarrowRightDashed, IconRefresh } from '@tabler/icons-react-native';
+import { router } from 'expo-router';
+import React, { useEffect, useState } from 'react';
+import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native';
 
 export default function PlayersPriority() {
-  const { players, setPlayers } = useGame()
-  const [currentPosition, setCurrentPosition] = useState<number>(1)
-  const [showAdvanceButton, setShowAdvanceButton] = useState<boolean>(false)
+  const { players, setPlayers } = useGame();
+  const [showAdvanceButton, setShowAdvanceButton] = useState<boolean>(false);
 
-  // Seleciona ou deseleciona o jogador e organiza a lista
+  // Seleciona ou deseleciona a prioridade de um jogador
   const handleSelectPlayer = (playerName: string) => {
-    setPlayers(prev => {
-      const updatedPlayers = prev.map(player =>
+    setPlayers((prev) =>
+      prev.map((player) =>
         player.name === playerName
-          ? {
-              ...player,
-              position: player.position ? undefined : currentPosition, // Se já estiver selecionado, remove a posição
-            }
+          ? { ...player, priority: !player.priority } // Alterna o valor da prioridade
           : player
       )
+    );
+  };
 
-      // Se a posição foi removida, resetamos a contagem da posição
-      const playersWithPosition = updatedPlayers.filter(
-        player => player.position !== undefined
-      )
-      const playersWithoutPosition = updatedPlayers.filter(
-        player => player.position === undefined
-      )
-
-      // Recalcula as posições para os jogadores selecionados
-      const sortedPlayersWithPosition = playersWithPosition
-        .sort((a, b) => a.position! - b.position!) // Ordena os jogadores selecionados pela posição
-        .map((player, index) => ({
-          ...player,
-          position: index + 1, // Recalcula as posições de 1 para cima
-        }))
-
-      // Junta os jogadores selecionados e não selecionados
-      const sortedPlayers = [
-        ...sortedPlayersWithPosition, // Jogadores selecionados com posições recalculadas
-        ...playersWithoutPosition, // Jogadores não selecionados
-      ]
-
-      // Atualiza a lista com a nova ordem
-      return sortedPlayers
-    })
-
-    // Atualiza a próxima posição para o próximo jogador a ser selecionado
-    setCurrentPosition(prev => prev + 1)
-  }
-
-  // Reseta as posições dos jogadores
+  // Reseta as prioridades dos jogadores
   const handleResetPlayers = () => {
-    setPlayers(players)
-    setCurrentPosition(1)
-  }
+    setPlayers((prev) => prev.map((player) => ({ ...player, priority: false }))); // Reseta a prioridade
+  };
 
-  // Verifica se todos os jogadores têm uma posição atribuída
+  // Verifica se pelo menos um jogador foi selecionado como prioridade
   useEffect(() => {
-    const allSelected = players.every(player => player.position !== undefined)
-    setShowAdvanceButton(allSelected)
-  }, [players])
+    const anySelected = players.some((player) => player.priority);
+    setShowAdvanceButton(anySelected);
+  }, [players]);
 
   const handleSubmit = () => {
-    router.push('/captains')
-  }
+    router.push('/captains');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -80,18 +45,18 @@ export default function PlayersPriority() {
             source={require('@/assets/arrows-random.png')}
             style={styles.randomIcon}
           />
-          <Text style={styles.title}>Ordem de Chegada</Text>
+          <Text style={styles.title}>Selecione os Jogadores com Prioridade</Text>
         </View>
         <FlatList
           data={players}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
+          renderItem={({ item }) => (
             <TouchableOpacity
-              style={[styles.playerItem, item.position ? styles.selectedItem : undefined]}
-              onPress={() => handleSelectPlayer(item.name)} // Chama a função de selecionar ou desmarcar
+              style={[styles.playerItem, item.priority ? styles.selectedItem : undefined]}
+              onPress={() => handleSelectPlayer(item.name)} // Alterna a prioridade
             >
               <Text style={styles.playerText}>
-                {item.position ? `${item.position}. ` : ''} {item.name}
+                {item.priority ? '⭐ ' : ''} {item.name}
               </Text>
             </TouchableOpacity>
           )}
@@ -110,5 +75,5 @@ export default function PlayersPriority() {
         </View>
       </View>
     </SafeAreaView>
-  )
+  );
 }

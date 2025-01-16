@@ -149,6 +149,7 @@ export const drawTeamsByPriority = (
 };
 
 
+
 // Função para distribuir jogadores nos times balanceando pelas habilidades
 export const drawTeamsBySkill = (
   players: Player[],

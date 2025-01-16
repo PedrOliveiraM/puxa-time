@@ -1,8 +1,8 @@
-import { RelativePathString, router } from 'expo-router';
+import { RelativePathString } from 'expo-router';
 
 export const routes: Record<string, RelativePathString> = {
   ARRIVAL: '/playersOrder' as RelativePathString,
-  PRIORITY: '/+not-found' as RelativePathString,
+  PRIORITY: '/playersPriority' as RelativePathString,
   SKILL: '/+not-found' as RelativePathString,
   RANDOM: '/captains' as RelativePathString,
 };
