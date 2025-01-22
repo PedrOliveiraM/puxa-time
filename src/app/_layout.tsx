@@ -82,6 +82,16 @@ export default function Layout() {
           />
 
           <Stack.Screen
+            name="playersSkill"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
+            }}
+          />
+
+          <Stack.Screen
             name="captains"
             options={{
               title: '',
