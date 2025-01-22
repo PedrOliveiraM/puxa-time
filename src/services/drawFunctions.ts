@@ -120,16 +120,17 @@ export const drawTeamsByPriority = (
     players: captains[index] ? [captains[index]] : [], // Adiciona o capitão ao time
   }));
 
-  // Preenche os times com jogadores prioritários
+  // Preenche os dois primeiros times com jogadores prioritários
   let teamIndex = 0;
   while (shuffledPriorityPlayers.length) {
-    if (teams[teamIndex].players.length < playersPerTeam) {
+    // Limita os jogadores prioritários apenas aos dois primeiros times
+    if (teamIndex < 2 && teams[teamIndex].players.length < playersPerTeam) {
       teams[teamIndex].players.push(shuffledPriorityPlayers.pop()!);
     }
-    teamIndex = (teamIndex + 1) % numTeams;
+    teamIndex = (teamIndex + 1) % 2; // Alterna apenas entre os dois primeiros times
   }
 
-  // Preenche os times com jogadores não prioritários
+  // Preenche os times restantes com jogadores não prioritários
   teamIndex = 0;
   while (shuffledNonPriorityPlayers.length) {
     if (teams[teamIndex].players.length < playersPerTeam) {
@@ -147,8 +148,6 @@ export const drawTeamsByPriority = (
 
   return teams;
 };
-
-
 
 // Função para distribuir jogadores nos times balanceando pelas habilidades
 export const drawTeamsBySkill = (
