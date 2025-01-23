@@ -30,8 +30,8 @@ export default function Layout() {
             name="index"
             options={{
               title: '',
-              headerShown: true,
-              headerTransparent: true,
+              headerShown: false,
+              headerTransparent: false,
             }}
           />
           <Stack.Screen
