@@ -57,8 +57,14 @@ export default function PlayersOrder() {
 
   // Reseta as posições dos jogadores
   const handleResetPlayers = () => {
-    setPlayers(players)
-    setCurrentPosition(1)
+    setPlayers(prev =>
+      prev.map(player => ({
+        ...player,
+        position: undefined, // Remove todas as posições atribuídas
+      }))
+    )
+
+    setCurrentPosition(1) // Reinicia o contador de posição
   }
 
   // Verifica se todos os jogadores têm uma posição atribuída
