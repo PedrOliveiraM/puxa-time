@@ -1,7 +1,5 @@
 import { Button } from '@/components/button'
-import { Card } from '@/components/card'
 import TeamCard from '@/components/team-card'
-import { modeSortArray } from '@/constants/modeSort'
 import { useGame } from '@/context/GameContext'
 import {
   drawTeamsByArrival,
@@ -12,19 +10,19 @@ import {
 import { styles } from '@/styles/styles.drawerTeams'
 import { Team } from '@/types/ITeams'
 import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
+import { router } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function DrawerTeams() {
-  const { players, settings, captains } = useGame()
+  const { players, settings, captains, setTeams } = useGame()
 
-  const numberOfTeams = settings.numberOfTeams // numero de times
-  const playersPerTeam = settings.playersPerTeam // numero de jogadores por time
-  const modeSort = settings.modeSort // modo de sorteio
+  const numberOfTeams = settings.numberOfTeams
+  const playersPerTeam = settings.playersPerTeam
+  const modeSort = settings.modeSort
   const [isVisible, setIsVisible] = useState(false)
-  const [teams, setTeams] = useState<Team[]>([])
+  const [teams, setTeam] = useState<Team[]>([])
 
-  // Dicionário de sorteios
   const sortFunctions = {
     SKILL: drawTeamsBySkill,
     NULL: drawTeamsRandomly,
@@ -46,9 +44,7 @@ export default function DrawerTeams() {
   }
 
   const findAllCapitains = () => {
-    const captains = players
-      .filter(player => player.isCaptain) // Filtra os jogadores que são capitães
-      .map(player => player.name) // Extrai os nomes dos capitães
+    const captains = players.filter(player => player.isCaptain).map(player => player.name)
 
     console.log('2- findAllCapitains:', captains)
   }
@@ -57,16 +53,21 @@ export default function DrawerTeams() {
     const sortFunction = sortFunctions[modeSort]
     console.log('MODO DE SORTEIO: ', modeSort)
     if (sortFunction) {
-      setTeams(sortFunction(players, numberOfTeams, playersPerTeam))
+      setTeam(sortFunction(players, numberOfTeams, playersPerTeam))
       console.log('if - MODO DE SORTEIO: ', sortFunction)
       setIsVisible(true)
       return
     }
-    setTeams(drawTeamsRandomly(players, numberOfTeams, playersPerTeam))
+    setTeam(drawTeamsRandomly(players, numberOfTeams, playersPerTeam))
     console.log('if - MODO DE SORTEIO DEFAULT: ', sortFunction)
     setIsVisible(true)
   }
 
+  const handleScoreboard = () => {
+    setTeams(teams)
+    router.push('/scoreboard')
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -92,6 +93,10 @@ export default function DrawerTeams() {
               }
               players={item.players}
               score={item.score}
+              victories={0}
+              draws={0}
+              defeats={0}
+              onUpdateScore={() => {}}
             />
           )}
           keyExtractor={item => item.name}
@@ -100,7 +105,7 @@ export default function DrawerTeams() {
         />
 
         {isVisible && (
-          <Button variant="success">
+          <Button variant="success" onPress={handleScoreboard}>
             <Button.Title>Avançar</Button.Title>
             <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
           </Button>

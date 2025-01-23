@@ -110,6 +110,16 @@ export default function Layout() {
               header: () => <HeaderBackButton />,
             }}
           />
+
+          <Stack.Screen
+            name="scoreboard"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
+            }}
+          />
         </Stack>
       </GestureHandlerRootView>
     </GameProvider>

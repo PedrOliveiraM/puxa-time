@@ -1,12 +1,14 @@
 import { GameContextType } from '@/types/IGameContext'
 import { Player } from '@/types/IPlayer'
 import { Settings } from '@/types/ISettings'
+import { Team } from '@/types/ITeams'
 import React, { createContext, ReactNode, useContext, useState } from 'react'
 
 const GameContext = createContext<GameContextType | null>(null)
 
 export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [players, setPlayers] = useState<Player[]>([])
+  const [teams, setTeams] = useState<Team[]>([])
   const [settings, setSettings] = useState<Settings>({
     numberOfTeams: 2,
     playersPerTeam: 0,
@@ -29,6 +31,8 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setResults,
         totalPlayers,
         setTotalPlayers,
+        teams,
+        setTeams,
       }}
     >
       {children}

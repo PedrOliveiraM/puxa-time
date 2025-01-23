@@ -1,5 +1,6 @@
 import { Player } from "./IPlayer"
 import { Settings } from "./ISettings"
+import { Team } from "./ITeams"
 
 export interface GameContextType {
   players: Player[]
@@ -12,4 +13,6 @@ export interface GameContextType {
   setResults: React.Dispatch<React.SetStateAction<string[]>>
   totalPlayers: number
   setTotalPlayers: React.Dispatch<React.SetStateAction<number>>
+  teams: Team[]
+  setTeams: React.Dispatch<React.SetStateAction<Team[]>>
 }
