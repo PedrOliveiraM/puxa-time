@@ -36,6 +36,19 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     )
   }
 
+  const reset = () => {
+    setPlayers([])
+    setTeams([])
+    setSettings({
+      numberOfTeams: 2,
+      playersPerTeam: 0,
+      modeSort: 'RANDOM',
+    })
+    setCaptains([])
+    setResults([])
+    setTotalPlayers(0)
+  }
+
   return (
     <GameContext.Provider
       value={{
@@ -52,6 +65,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         teams,
         setTeams,
         updateTeamScore,
+        reset,
       }}
     >
       {children}

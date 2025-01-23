@@ -1,10 +1,17 @@
+import { Button } from '@/components/button'
 import ScoreCard from '@/components/score-card'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.scoreboard'
+import { IconCheck } from '@tabler/icons-react-native'
+import { router } from 'expo-router'
 import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function Scoreboard() {
   const { teams } = useGame()
+
+  const handleSubmit = () => {
+    router.push('/players')
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,6 +45,12 @@ export default function Scoreboard() {
           numColumns={1} // Define o número de colunas desejado
           contentContainerStyle={styles.teamsContainer}
         />
+        <View style={styles.buttonContainer}>
+          <Button onPress={handleSubmit} variant="success">
+            <Button.Title>Finalizar</Button.Title>
+            <Button.Icon icon={IconCheck} color="white" />
+          </Button>
+        </View>
       </View>
     </SafeAreaView>
   )

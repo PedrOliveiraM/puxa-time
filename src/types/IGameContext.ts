@@ -1,4 +1,3 @@
-import { ScoreType } from "@/components/score-button"
 import { Player } from "./IPlayer"
 import { Settings } from "./ISettings"
 import { Team } from "./ITeams"
@@ -18,4 +17,5 @@ export interface GameContextType {
   setTeams: React.Dispatch<React.SetStateAction<Team[]>>
   updateTeamScore: (teamName: string, type: keyof Pick<Team, 'victories' | 'draws' | 'defeats'>,
     action: "add" | "remove") => void
+  reset: () => void
 }
