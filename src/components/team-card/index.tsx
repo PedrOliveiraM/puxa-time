@@ -2,12 +2,10 @@ import { TeamCardProps } from '@/types/ITeamsCardProps'
 import { Image, Text, View } from 'react-native'
 import { styles } from './styles'
 
-const TeamCard = ({ teamName, players, score }: TeamCardProps) => {
+const TeamCard = ({ teamName, players }: TeamCardProps) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.teamName}>
-        {teamName} : {score}
-      </Text>
+      <Text style={styles.teamName}>{teamName}</Text>
       <View style={styles.playersContainer}>
         {players.map((player, index) => (
           <View key={index} style={styles.playerRow}>
