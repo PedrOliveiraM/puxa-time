@@ -1,3 +1,4 @@
+import { ScoreType } from '@/components/score-button'
 import { GameContextType } from '@/types/IGameContext'
 import { Player } from '@/types/IPlayer'
 import { Settings } from '@/types/ISettings'
@@ -18,6 +19,23 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [results, setResults] = useState<string[]>([])
   const [totalPlayers, setTotalPlayers] = useState(0)
 
+  const updateTeamScore = (
+    teamName: string,
+    type: ScoreType,
+    action: 'add' | 'remove'
+  ) => {
+    setTeams(prevTeams =>
+      prevTeams.map(team => {
+        if (team.name === teamName) {
+          const change = action === 'add' ? 1 : -1
+          const newValue = Math.max((team[type] || 0) + change, 0)
+          return { ...team, [type]: newValue }
+        }
+        return team
+      })
+    )
+  }
+
   return (
     <GameContext.Provider
       value={{
@@ -33,6 +51,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setTotalPlayers,
         teams,
         setTeams,
+        updateTeamScore,
       }}
     >
       {children}

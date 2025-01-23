@@ -64,10 +64,25 @@ export default function DrawerTeams() {
   }
 
   const handleScoreboard = () => {
+    initialScoreTeams()
     setTeams(teams)
     router.push('/scoreboard')
   }
-  
+
+  const initialScoreTeams = () => {
+    const teamsUpdated = teams.map(team => {
+      return {
+        ...team,
+        score: 0,
+        victories: 0,
+        draws: 0,
+        defeats: 0,
+      }
+    })
+
+    setTeams(teamsUpdated)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
@@ -96,7 +111,6 @@ export default function DrawerTeams() {
               victories={0}
               draws={0}
               defeats={0}
-              onUpdateScore={() => {}}
             />
           )}
           keyExtractor={item => item.name}
