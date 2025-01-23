@@ -1,14 +1,13 @@
 import { Button } from '@/components/button'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.captains'
-import { Player } from '@/types/IPlayer'
 import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useState } from 'react'
 import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Captains() {
-  const { settings, players, setCaptains, setPlayers } = useGame() // Pegando times e jogadores do contexto
+  const { settings, players, setCaptains, setPlayers } = useGame()
   const [selectedCaptainNames, setSelectedCaptainNames] = useState<string[]>([])
 
   // Número de capitães necessários com base nas configurações
