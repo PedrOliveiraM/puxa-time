@@ -4,13 +4,28 @@ import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.scoreboard'
 import { IconCheck } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
-import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
+import { Alert, FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function Scoreboard() {
   const { teams } = useGame()
 
   const handleSubmit = () => {
-    router.push('/players')
+    Alert.alert(
+      'Atenção',
+      'Você perderá todas as informações atuais. Deseja realmente reiniciar?',
+      [
+        {
+          text: 'Cancelar',
+          style: 'cancel', 
+        },
+        {
+          text: 'Reiniciar',
+          onPress: () => router.replace('/'), 
+          style: 'destructive', // Estilo para dar destaque ao botão de ação importante
+        },
+      ],
+      { cancelable: true } // Permite cancelar o alerta tocando fora da caixa
+    )
   }
 
   return (
