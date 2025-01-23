@@ -1,16 +1,30 @@
 import { TeamCardProps } from '@/types/ITeamsCardProps'
-import { Text, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { styles } from './styles'
 
-const TeamCard = ({ teamName, players }: TeamCardProps) => {
+const TeamCard = ({ teamName, players, score }: TeamCardProps) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.teamName}>{teamName}</Text>
+      <Text style={styles.teamName}>
+        {teamName} : {score}
+      </Text>
       <View style={styles.playersContainer}>
         {players.map((player, index) => (
-          <Text key={index} style={styles.player}>
-            {player.name} {player.isCaptain && '🛡️'}
-          </Text>
+          <View key={index} style={styles.playerRow}>
+            <Image
+              source={
+                player.skill === 'Beginner'
+                  ? require('@/assets/skills/Beginner-icon.png')
+                  : player.skill === 'Intermediate'
+                    ? require('@/assets/skills/Intermediate-icon.png')
+                    : require('@/assets/skills/Advanced-icon.png')
+              }
+              style={styles.skillIcon}
+            />
+            <Text style={styles.playerText}>
+              {player.name} {player.isCaptain && '🛡️'}
+            </Text>
+          </View>
         ))}
       </View>
     </View>

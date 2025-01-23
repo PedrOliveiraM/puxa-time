@@ -1,4 +1,5 @@
 import { colors } from "@/styles/colors";
+import { fontFamily } from "@/styles/font-family";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    width: 200,
+    width: 300,
   },
   teamName: {
     fontSize: 20,
@@ -33,4 +34,19 @@ export const styles = StyleSheet.create({
     marginBottom: 3,
     color: colors.text.primary,
   },
-})
+  playerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  skillIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 8,
+  },
+  playerText: {
+    fontSize: 16,
+    color: colors.text.primary,
+    fontFamily: fontFamily.regular,
+  },
+});

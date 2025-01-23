@@ -91,6 +91,7 @@ export default function DrawerTeams() {
                 item.players.find(player => player.isCaptain)?.name || 'Sem Capitão'
               }
               players={item.players}
+              score={item.score}
             />
           )}
           keyExtractor={item => item.name}
