@@ -27,6 +27,9 @@ export const drawTeamsRandomly = (
     name: `Time ${index + 1}`,
     players: captains[index] ? [captains[index]] : [],
     score: 0,
+    defeats: 0,
+    draws: 0,
+    victories: 0,
   }))
 
   // Distribuir os jogadores restantes de forma equilibrada
@@ -71,6 +74,9 @@ export const drawTeamsByArrival = (
     name: `Time ${index + 1}`,
     players: captains[index] ? [captains[index]] : [], // Adiciona o capitão ao time
     score: 0,
+    defeats: 0,
+    draws: 0,
+    victories: 0,
   }))
 
   // Preenche os times sequencialmente com os não capitães
@@ -123,6 +129,9 @@ export const drawTeamsByPriority = (
     name: `Time ${index + 1}`,
     players: captains[index] ? [captains[index]] : [], // Adiciona o capitão ao time
     score: 0,
+    defeats: 0,
+    draws: 0,
+    victories: 0,
   }))
 
   // Preenche os dois primeiros times com jogadores prioritários
@@ -239,6 +248,9 @@ export const drawTeamsBySkill = (
     name: `Time ${index + 1}`,
     players: [captains[index]],
     score: 0,
+    defeats: 0,
+    draws: 0,
+    victories: 0,
   }))
 
   // Função para preencher times de forma balanceada
