@@ -1,8 +1,6 @@
 import { Button } from '@/components/button'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.playersOrder'
-import { TEST_PLAYERS } from '@/test/player.test'
-import { Player } from '@/types/IPlayer'
 import { IconArrowNarrowRightDashed, IconRefresh } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'

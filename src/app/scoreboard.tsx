@@ -16,11 +16,11 @@ export default function Scoreboard() {
       [
         {
           text: 'Cancelar',
-          style: 'cancel', 
+          style: 'cancel',
         },
         {
           text: 'Reiniciar',
-          onPress: () => router.replace('/'), 
+          onPress: () => router.replace('/'),
           style: 'destructive', // Estilo para dar destaque ao botão de ação importante
         },
       ],
@@ -33,10 +33,7 @@ export default function Scoreboard() {
       <View style={styles.container}>
         <Image source={require('@/assets/Logo.png')} style={styles.logo} />
         <View style={styles.titleContainer}>
-          <Image
-            source={require('@/assets/arrows-random.png')}
-            style={styles.randomIcon}
-          />
+          <Image source={require('@/assets/scoreboard.png')} style={styles.randomIcon} />
           <Text style={styles.title}>Placar</Text>
         </View>
 
