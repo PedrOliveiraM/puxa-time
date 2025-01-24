@@ -9,8 +9,8 @@ export interface GameContextType {
   setSettings: React.Dispatch<React.SetStateAction<Settings>>
   captains: Player[]
   setCaptains: React.Dispatch<React.SetStateAction<Player[]>>
-  results: string[]
-  setResults: React.Dispatch<React.SetStateAction<string[]>>
+  results: Team[]
+  setResults: React.Dispatch<React.SetStateAction<Team[]>>
   totalPlayers: number
   setTotalPlayers: React.Dispatch<React.SetStateAction<number>>
   teams: Team[]
@@ -18,4 +18,5 @@ export interface GameContextType {
   updateTeamScore: (teamName: string, type: keyof Pick<Team, 'victories' | 'draws' | 'defeats'>,
     action: "add" | "remove") => void
   reset: () => void
+  updateResults: () => void
 }

@@ -1,26 +1,37 @@
 import { Button } from '@/components/button'
 import ScoreCard from '@/components/score-card'
+import { WinnerModal } from '@/components/winnerModal'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.scoreboard'
+import { Team } from '@/types/ITeams'
 import { IconCheck } from '@tabler/icons-react-native'
-import { router } from 'expo-router'
+import { useEffect, useState } from 'react'
 import { Alert, FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function Scoreboard() {
-  const { teams } = useGame()
+  const { teams, results, updateResults } = useGame()
+  const [isVisible, setIsVisible] = useState(false)
+  const [winnerTeams, setWinnerTeams] = useState<Team[]>([])
+
+  useEffect(() => {
+    setWinnerTeams(results)
+  }, [results])
 
   const handleSubmit = () => {
+    updateResults()
+    setWinnerTeams(results)
+
     Alert.alert(
       'Atenção',
-      'Você perderá todas as informações atuais. Deseja realmente reiniciar?',
+      'Você está prestes a finalizar o jogo. Deseja ver o vencedor?',
       [
         {
           text: 'Cancelar',
-          style: 'cancel',
+          style: 'default',
         },
         {
-          text: 'Reiniciar',
-          onPress: () => router.replace('/'),
+          text: 'Ver Vencedor',
+          onPress: () => setIsVisible(true),
           style: 'destructive',
         },
       ],
@@ -36,7 +47,11 @@ export default function Scoreboard() {
           <Image source={require('@/assets/scoreboard.png')} style={styles.randomIcon} />
           <Text style={styles.title}>Placar</Text>
         </View>
-
+        <WinnerModal
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
+          winnerTeams={winnerTeams}
+        />
         <FlatList
           data={teams}
           renderItem={({ item, index }) => (

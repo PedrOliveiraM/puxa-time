@@ -16,8 +16,20 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     modeSort: 'RANDOM',
   })
   const [captains, setCaptains] = useState<Player[]>([])
-  const [results, setResults] = useState<string[]>([])
+  const [results, setResults] = useState<Team[]>([])
   const [totalPlayers, setTotalPlayers] = useState(0)
+
+  const updateResults = () => {
+    const sortedTeams = [...teams].sort((a, b) => {
+      if (b.victories !== a.victories) return b.victories - a.victories
+      if (b.draws !== a.draws) return b.draws - a.draws
+      if (a.defeats !== b.defeats) return a.defeats - b.defeats
+      return a.name.localeCompare(b.name)
+    })
+
+    const top3 = sortedTeams.slice(0, 3)
+    setResults(top3)
+  }
 
   const updateTeamScore = (
     teamName: string,
@@ -34,6 +46,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return team
       })
     )
+    updateResults()
   }
 
   const reset = () => {
@@ -66,6 +79,7 @@ export const GameProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         setTeams,
         updateTeamScore,
         reset,
+        updateResults,
       }}
     >
       {children}
