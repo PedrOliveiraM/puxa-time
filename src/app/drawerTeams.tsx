@@ -94,9 +94,13 @@ export default function DrawerTeams() {
           />
           <Text style={styles.title}>Sorter Times</Text>
         </View>
-        <Button onPress={() => handleSortTeams()}>
-          <Button.Title>Sortear</Button.Title>
-        </Button>
+
+        <View style={styles.sortContainer}>
+          <Button onPress={() => handleSortTeams()}>
+            <Button.Title>Sortear</Button.Title>
+          </Button>
+        </View>
+
         <FlatList
           data={teams}
           renderItem={({ item, index }) => (
@@ -119,10 +123,12 @@ export default function DrawerTeams() {
         />
 
         {isVisible && (
-          <Button variant="success" onPress={handleScoreboard}>
-            <Button.Title>Avançar</Button.Title>
-            <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
-          </Button>
+          <View style={styles.footerContainer}>
+            <Button variant="success" onPress={handleScoreboard}>
+              <Button.Title>Avançar</Button.Title>
+              <Button.Icon icon={IconArrowNarrowRightDashed} color="white" />
+            </Button>
+          </View>
         )}
       </View>
     </SafeAreaView>

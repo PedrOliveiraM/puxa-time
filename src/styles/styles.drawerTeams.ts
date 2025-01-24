@@ -1,14 +1,35 @@
-import { StyleSheet } from "react-native"
+import { Platform, StyleSheet } from "react-native"
 import { colors } from "./colors"
 import { fontFamily } from "./font-family"
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 20,
     flexDirection: 'column',
-    paddingHorizontal: 20,
+    ...Platform.select({
+      android: {
+        paddingHorizontal: 10,
+        paddingBottom: 10,
+      },
+      ios: {
+        paddingHorizontal: 20,
+        paddingBottom: 20,
+      },
+    }),
     backgroundColor: colors.background,
+  },
+  sortContainer: {
+    width: '100%',
+    padding: 10,
+    ...Platform.select({
+      android: {
+        paddingHorizontal: 10,
+      },
+      ios: {
+        paddingHorizontal: 50
+      }
+    }),
   },
   title: {
     fontSize: 26,
@@ -48,4 +69,16 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexWrap: 'wrap',
   },
+  footerContainer: {
+    width: '100%',
+    padding: 10,
+    ...Platform.select({
+      android: {
+        paddingHorizontal: 10,
+      },
+      ios: {
+        paddingHorizontal: 50,
+      }
+    }),
+  }
 })
