@@ -1,4 +1,4 @@
-import { IconArrowBack, IconArrowBackUp } from '@tabler/icons-react-native'
+import { IconArrowBackUp } from '@tabler/icons-react-native'
 import { Button } from '../button'
 
 import { colors } from '@/styles/colors'

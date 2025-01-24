@@ -6,7 +6,7 @@ export const s = StyleSheet.create({
   },
   container: {
     width: '20%',
-    paddingTop: 60,
+    paddingTop: 40,
     padding: 10
   }
 })
