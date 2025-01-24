@@ -5,10 +5,11 @@ import { fontFamily } from "./font-family"
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 20,
     flexDirection: 'column',
     paddingHorizontal: 20,
     backgroundColor: colors.background,
+    paddingBottom: 20,
   },
   title: {
     fontSize: 26,
@@ -28,10 +29,10 @@ export const styles = StyleSheet.create({
   playerItem: {
     padding: 16,
     marginBottom: 8,
-    backgroundColor: colors.input.background,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: colors.gray[200],
+    backgroundColor: colors.input.background
   },
   selectedItem: {
     backgroundColor: colors.button.primary,
