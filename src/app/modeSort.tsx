@@ -31,8 +31,6 @@ export default function ModeSort() {
       setIsLoading(false)
     }, 1000)
 
-    console.log('selectedMode:', selectedMode)
-
     setSettings(prev => ({
       ...prev,
       modeSort: selectedMode,
@@ -56,7 +54,7 @@ export default function ModeSort() {
           <Image source={require('@/assets/Logo.png')} style={s.logo} />
           <View style={s.titleContainer}>
             <Image source={require('@/assets/arrows-random.png')} style={s.randomIcon} />
-            <Text style={s.title}>Forma de Sorteio</Text>
+            <Text style={s.title}>Formas de Sorteio</Text>
           </View>
 
           <View style={s.flatContainer}>

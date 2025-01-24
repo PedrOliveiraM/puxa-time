@@ -1,13 +1,13 @@
-import { colors } from '@/styles/colors'
-import { fontFamily } from '@/styles/font-family'
-import { StyleSheet } from 'react-native'
+import { colors } from '@/styles/colors';
+import { fontFamily } from '@/styles/font-family';
+import { Platform, StyleSheet } from 'react-native';
 
 export const s = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
+    paddingTop: 20,
     flexDirection: 'column',
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
     backgroundColor: colors.background,
   },
   title: {
@@ -52,14 +52,22 @@ export const s = StyleSheet.create({
     gap: 10,
   },
   buttonContainer: {
-    marginTop: 20,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     gap: 10,
+    ...Platform.select({
+      ios: {
+        paddingHorizontal: 50
+      },
+      android: {
+        paddingHorizontal: 20
+      },
+    })
   },
   button: {
-    width: '97%',
+    width: '100%',
   },
   flatContainer: {
     width: '100%',
