@@ -21,10 +21,10 @@ export default function Scoreboard() {
         {
           text: 'Reiniciar',
           onPress: () => router.replace('/'),
-          style: 'destructive', // Estilo para dar destaque ao botão de ação importante
+          style: 'destructive',
         },
       ],
-      { cancelable: true } // Permite cancelar o alerta tocando fora da caixa
+      { cancelable: true }
     )
   }
 

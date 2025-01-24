@@ -1,14 +1,20 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { colors } from "./colors";
 import { fontFamily } from "./font-family";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
+    paddingTop: 20,
     flexDirection: 'column',
-    paddingHorizontal: 20,
     backgroundColor: colors.background,
+    paddingBottom: 10,
+    ...Platform.select({
+      ios: {
+        paddingHorizontal: 20,
+      },
+
+    })
   },
   title: {
     fontSize: 26,
@@ -60,6 +66,14 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     marginTop: 16,
     gap: 8,
+    ...Platform.select({
+      android: {
+        paddingHorizontal: 30,
+      },
+      ios: {
+        paddingHorizontal: 40,
+      }
+    })
   },
   logo: {
     width: 180,
