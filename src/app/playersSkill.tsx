@@ -2,7 +2,11 @@ import { Button } from '@/components/button'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.playersSkill'
 import { SkillLevel } from '@/types/ISkill'
-import { IconArrowNarrowRightDashed, IconRefresh } from '@tabler/icons-react-native'
+import {
+  IconArrowNarrowRightDashed,
+  IconFlameFilled,
+  IconRefresh,
+} from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useEffect } from 'react'
 import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
@@ -36,8 +40,12 @@ export default function PlayersSkill() {
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <Image source={require('@/assets/Logo.png')} style={styles.logo} />
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Definir Nível de Habilidade</Text>
+        <View style={styles.textContainer}>
+          <View style={styles.titleContainer}>
+            <IconFlameFilled style={styles.randomIcon} />
+            <Text style={styles.title}>Definir Nível de Habilidade</Text>
+          </View>
+          <Text style={styles.subTitle}>Selecione os jogadores</Text>
         </View>
         <FlatList
           data={players}

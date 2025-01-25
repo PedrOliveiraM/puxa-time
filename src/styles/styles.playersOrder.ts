@@ -17,6 +17,13 @@ export const styles = StyleSheet.create({
     color: colors.gray[100],
     fontFamily: fontFamily.bold,
   },
+  subTitle: {
+    fontSize: 18,
+    fontWeight: 'normal',
+    textAlign: 'center',
+    color: colors.gray[100],
+    fontFamily: fontFamily.regular,
+  },
   playerItem: {
     padding: 16,
     marginBottom: 8,
@@ -48,8 +55,18 @@ export const styles = StyleSheet.create({
     height: 32,
     color: colors.blue[300],
   },
+  textContainer: {
+    paddingBottom: 3,
+    marginBottom: 10,
+  },
   titleContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 2,
+    gap: 10
+  },
+  subTitleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,

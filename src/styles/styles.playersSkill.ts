@@ -105,4 +105,21 @@ export const styles = StyleSheet.create({
     height: 32,
     resizeMode: 'contain',
   },
+  subTitle: {
+    fontSize: 18,
+    fontWeight: 'normal',
+    textAlign: 'center',
+    color: colors.gray[100],
+    fontFamily: fontFamily.regular,
+  },
+  textContainer: {
+    paddingBottom: 3,
+    marginBottom: 10,
+  },
+  subTitleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 10,
+    gap: 10
+  },
 })
