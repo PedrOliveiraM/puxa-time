@@ -14,9 +14,12 @@ export function HeaderBackButton() {
         <Button.Icon icon={IconArrowBackUp} color={colors.gray[200]} />
       </Button>
 
-      <Button style={s.button} onPress={() => router.push('/plans')} variant="outline">
-        <Button.Icon icon={IconUserUp} color={colors.blue[300]} />
-      </Button>
+      {/* 
+        -- esperando publicação 
+        <Button style={s.button} onPress={() => router.push('/plans')} variant="outline">
+          <Button.Icon icon={IconUserUp} color={colors.blue[300]} />
+        </Button> 
+      */}
     </View>
   )
 }
