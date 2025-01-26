@@ -1,6 +1,6 @@
 import { colors } from '@/styles/colors'
 import { fontFamily } from '@/styles/font-family'
-import { StyleSheet } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
 
 export const s = StyleSheet.create({
   container: {
@@ -48,7 +48,14 @@ export const s = StyleSheet.create({
   },
   textarea: {
     minHeight: 100,
-    maxHeight: 200,
+    ...Platform.select({
+      ios: {
+        maxHeight: 200,
+      },
+      android: {
+        maxHeight: 100,
+      }
+    }),
     textAlignVertical: 'top',
   },
   errorText: {
