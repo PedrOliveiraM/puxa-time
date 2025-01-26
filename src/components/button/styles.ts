@@ -42,4 +42,5 @@ export const s = StyleSheet.create({
     borderColor: colors.gray[600],
     borderWidth: 1,
   },
+  outline: {},
 })

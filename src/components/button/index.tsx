@@ -10,7 +10,7 @@ import {
 import { s } from './styles'
 
 type ButtonProps = TouchableOpacityProps & {
-  variant?: 'success' | 'alert' | 'danger' | 'default' | 'disabled' // Definindo as variantes possíveis
+  variant?: 'success' | 'alert' | 'danger' | 'default' | 'disabled' | 'outline' // Definindo as variantes possíveis
   isLoading?: boolean
 }
 
@@ -40,6 +40,8 @@ function Button({
         return s.danger
       case 'disabled':
         return s.disabled
+      case 'outline':
+        return s.outline
       default:
         return s.default // Variantes padrão, caso nenhuma seja passada
     }
