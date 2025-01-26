@@ -43,8 +43,11 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text.primary,
     fontFamily: fontFamily.regular,
-
+    maxWidth: '60%', // Limita o tamanho máximo
+    overflow: 'hidden', // Garante que o conteúdo extra seja cortado
+    textOverflow: 'ellipsis', // Funciona com `numberOfLines`
   },
+
   skillButtons: {
     flexDirection: 'row',
     gap: 5,

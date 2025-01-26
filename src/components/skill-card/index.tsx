@@ -6,7 +6,10 @@ import { styles } from './styles'
 export function SkillCard({ item, handleSkillChange }: SkillCardProps) {
   return (
     <View style={styles.playerItem}>
-      <Text style={styles.playerText}>{item.name}</Text>
+      <Text style={styles.playerText}>
+        {item.name.length > 12 ? `${item.name.substring(0, 12)}...` : item.name}
+      </Text>
+
       <View style={styles.skillButtons}>
         <TouchableOpacity
           style={[
