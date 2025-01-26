@@ -1,4 +1,5 @@
 import { HeaderBackButton } from '@/components/header-back-button'
+import { HeaderPlansButton } from '@/components/header-plans-button'
 import { Loading } from '@/components/loading'
 import { GameProvider } from '@/context/GameContext'
 import { colors } from '@/styles/colors'
@@ -32,6 +33,15 @@ export default function Layout() {
               title: '',
               headerShown: false,
               headerTransparent: false,
+            }}
+          />
+          <Stack.Screen
+            name="plans"
+            options={{
+              title: '',
+              headerShown: true,
+              headerTransparent: true,
+              header: () => <HeaderBackButton />,
             }}
           />
           <Stack.Screen

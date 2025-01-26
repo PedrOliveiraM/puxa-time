@@ -6,15 +6,11 @@ import { useRouter } from 'expo-router'
 import { View } from 'react-native'
 import { s } from './styles'
 
-export function HeaderBackButton() {
+export function HeaderPlansButton() {
   const router = useRouter()
   return (
     <View style={s.container}>
       <Button style={s.button} onPress={() => router.back()}>
-        <Button.Icon icon={IconArrowBackUp} color={colors.gray[200]} />
-      </Button>
-
-      <Button style={s.button} onPress={() => router.push('/plans')} variant="outline">
         <Button.Icon icon={IconUserUp} color={colors.blue[300]} />
       </Button>
     </View>

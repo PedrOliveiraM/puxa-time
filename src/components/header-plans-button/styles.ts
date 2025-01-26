@@ -5,9 +5,7 @@ export const s = StyleSheet.create({
     padding: 10,
   },
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    width: '20%',
     paddingTop: 40,
     padding: 10,
   },
