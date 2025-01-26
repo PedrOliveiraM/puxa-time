@@ -1,4 +1,5 @@
 import { Button } from '@/components/button'
+import { SkillCard } from '@/components/skill-card'
 import { useGame } from '@/context/GameContext'
 import { styles } from '@/styles/styles.playersSkill'
 import { SkillLevel } from '@/types/ISkill'
@@ -51,47 +52,11 @@ export default function PlayersSkill() {
           data={players}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
-            <View style={styles.playerItem}>
-              <Text style={styles.playerText}>{item.name}</Text>
-              <View style={styles.skillButtons}>
-                <TouchableOpacity
-                  style={[
-                    styles.skillButton,
-                    item.skill === 'Beginner' && styles.selectedSkillButton,
-                  ]}
-                  onPress={() => handleSkillChange(item.name, 'Beginner')}
-                >
-                  <Image
-                    source={require('@/assets/skills/Beginner-icon.png')}
-                    style={styles.skillImage}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[
-                    styles.skillButton,
-                    item.skill === 'Intermediate' && styles.selectedSkillButton,
-                  ]}
-                  onPress={() => handleSkillChange(item.name, 'Intermediate')}
-                >
-                  <Image
-                    source={require('@/assets/skills/Intermediate-icon.png')}
-                    style={styles.skillImage}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[
-                    styles.skillButton,
-                    item.skill === 'Advanced' && styles.selectedSkillButton,
-                  ]}
-                  onPress={() => handleSkillChange(item.name, 'Advanced')}
-                >
-                  <Image
-                    source={require('@/assets/skills/Advanced-icon.png')}
-                    style={styles.skillImage}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
+            <SkillCard
+              key={item.name}
+              item={item}
+              handleSkillChange={handleSkillChange}
+            />
           )}
         />
         <View style={styles.buttonContainer}>

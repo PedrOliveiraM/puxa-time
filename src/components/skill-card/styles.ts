@@ -1,6 +1,6 @@
+import { colors } from "@/styles/colors";
+import { fontFamily } from "@/styles/font-family";
 import { Platform, StyleSheet } from "react-native";
-import { colors } from "./colors";
-import { fontFamily } from "./font-family";
 
 export const styles = StyleSheet.create({
   container: {
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.text.primary,
     fontFamily: fontFamily.regular,
-    
+
   },
   skillButtons: {
     flexDirection: 'row',
@@ -123,4 +123,4 @@ export const styles = StyleSheet.create({
     paddingBottom: 10,
     gap: 10
   },
-})
+});
