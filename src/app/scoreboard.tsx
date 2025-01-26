@@ -7,7 +7,7 @@ import { styles } from '@/styles/styles.scoreboard'
 import { Team } from '@/types/ITeams'
 import { IconCheck } from '@tabler/icons-react-native'
 import { useEffect, useState } from 'react'
-import { Alert, FlatList, Image, SafeAreaView, Text, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function Scoreboard() {
   const { teams, results, updateResults } = useGame()

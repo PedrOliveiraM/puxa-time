@@ -1,5 +1,5 @@
-import { colors } from "@/styles/colors";
-import { StyleSheet } from "react-native";
+import { colors } from '@/styles/colors'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   modalBackground: {
@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo preto semi-transparente
     justifyContent: 'center', // Centraliza o modal verticalmente
     alignItems: 'center', // Centraliza o modal horizontalmente
-    zIndex: 999
+    zIndex: 999,
   },
   modalContainer: {
     padding: 20,
@@ -50,4 +50,4 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 5,
   },
-});
+})

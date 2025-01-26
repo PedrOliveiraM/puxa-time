@@ -24,7 +24,7 @@ export const drawTeamsRandomly = (
 
   // Inicializa os times com os capitães
   const teams: Team[] = Array.from({ length: numTeams }, (_, index) => {
-    const captain = captains[index];
+    const captain = captains[index]
     return {
       name: captain ? `Time do ${captain.name}` : `Time ${index + 1}`,
       players: captain ? [captain] : [],
@@ -32,8 +32,8 @@ export const drawTeamsRandomly = (
       defeats: 0,
       draws: 0,
       victories: 0,
-    };
-  });
+    }
+  })
 
   // Distribuir os jogadores restantes de forma equilibrada
   nonCaptains.forEach(player => {
@@ -74,7 +74,7 @@ export const drawTeamsByArrival = (
 
   // Inicializa os times com os capitães
   const teams: Team[] = Array.from({ length: numTeams }, (_, index) => {
-    const captain = captains[index];
+    const captain = captains[index]
     return {
       name: captain ? `Time do ${captain.name}` : `Time ${index + 1}`,
       players: captain ? [captain] : [],
@@ -82,8 +82,8 @@ export const drawTeamsByArrival = (
       defeats: 0,
       draws: 0,
       victories: 0,
-    };
-  });
+    }
+  })
 
   // Preenche os times sequencialmente com os não capitães
   let teamIndex = 0 // Índice do time atual
@@ -132,7 +132,7 @@ export const drawTeamsByPriority = (
 
   // Inicializa os times com os capitães
   const teams: Team[] = Array.from({ length: numTeams }, (_, index) => {
-    const captain = captains[index];
+    const captain = captains[index]
     return {
       name: captain ? `Time do ${captain.name}` : `Time ${index + 1}`,
       players: captain ? [captain] : [],
@@ -140,8 +140,8 @@ export const drawTeamsByPriority = (
       defeats: 0,
       draws: 0,
       victories: 0,
-    };
-  });
+    }
+  })
 
   // Preenche os dois primeiros times com jogadores prioritários
   let teamIndex = 0
@@ -254,7 +254,7 @@ export const drawTeamsBySkill = (
 
   // Inicializa os times com os capitães
   const teams: Team[] = Array.from({ length: numTeams }, (_, index) => {
-    const captain = captains[index];
+    const captain = captains[index]
     return {
       name: captain ? `Time do ${captain.name}` : `Time ${index + 1}`,
       players: captain ? [captain] : [],
@@ -262,8 +262,8 @@ export const drawTeamsBySkill = (
       defeats: 0,
       draws: 0,
       victories: 0,
-    };
-  });
+    }
+  })
 
   // Função para preencher times de forma balanceada
   const distributePlayers = (players: Player[], teams: Team[]) => {

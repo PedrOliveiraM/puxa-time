@@ -1,6 +1,6 @@
-import { Player } from "./IPlayer"
-import { Settings } from "./ISettings"
-import { Team } from "./ITeams"
+import { Player } from './IPlayer'
+import { Settings } from './ISettings'
+import { Team } from './ITeams'
 
 export interface GameContextType {
   players: Player[]
@@ -15,8 +15,11 @@ export interface GameContextType {
   setTotalPlayers: React.Dispatch<React.SetStateAction<number>>
   teams: Team[]
   setTeams: React.Dispatch<React.SetStateAction<Team[]>>
-  updateTeamScore: (teamName: string, type: keyof Pick<Team, 'victories' | 'draws' | 'defeats'>,
-    action: "add" | "remove") => void
+  updateTeamScore: (
+    teamName: string,
+    type: keyof Pick<Team, 'victories' | 'draws' | 'defeats'>,
+    action: 'add' | 'remove'
+  ) => void
   reset: () => void
   updateResults: () => void
 }

@@ -135,7 +135,6 @@ export default function PlayersScreen() {
               placeholderTextColor={colors.input.placeholder}
               multiline
               textAlignVertical="top"
-               
             />
 
             <Text style={s.label}>Quantidade total de jogadores:</Text>

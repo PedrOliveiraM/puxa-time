@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native"
-import { colors } from "./colors"
-import { fontFamily } from "./font-family"
+import { StyleSheet } from 'react-native'
+import { colors } from './colors'
+import { fontFamily } from './font-family'
 
 export const styles = StyleSheet.create({
   container: {
@@ -64,12 +64,12 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 2,
-    gap: 10
+    gap: 10,
   },
   subTitleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
 })

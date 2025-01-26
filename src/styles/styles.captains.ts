@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native"
-import { colors } from "./colors"
-import { fontFamily } from "./font-family"
+import { StyleSheet } from 'react-native'
+import { colors } from './colors'
+import { fontFamily } from './font-family'
 
 export const styles = StyleSheet.create({
   container: {
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: colors.gray[200],
-    backgroundColor: colors.input.background
+    backgroundColor: colors.input.background,
   },
   selectedItem: {
     backgroundColor: colors.button.primary,
@@ -62,10 +62,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
   mainContainer: {
     flexDirection: 'column',
     gap: 16,
-  }
+  },
 })

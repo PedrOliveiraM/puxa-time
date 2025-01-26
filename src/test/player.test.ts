@@ -1,4 +1,4 @@
-import { Player } from "@/types/IPlayer";
+import { Player } from '@/types/IPlayer'
 
 export const TEST_PLAYERS: Player[] = [
   { name: 'Lucas' },
@@ -9,5 +9,5 @@ export const TEST_PLAYERS: Player[] = [
   { name: 'Rafael' },
   { name: 'Felipe' },
   { name: 'Bruno' },
-  { name: 'Carlos' }
-];
+  { name: 'Carlos' },
+]

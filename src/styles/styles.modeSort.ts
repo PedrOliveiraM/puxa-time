@@ -1,6 +1,6 @@
-import { colors } from '@/styles/colors';
-import { fontFamily } from '@/styles/font-family';
-import { Platform, StyleSheet } from 'react-native';
+import { colors } from '@/styles/colors'
+import { fontFamily } from '@/styles/font-family'
+import { Platform, StyleSheet } from 'react-native'
 
 export const s = StyleSheet.create({
   container: {
@@ -33,7 +33,7 @@ export const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
   label: {
     fontSize: 16,
@@ -59,12 +59,12 @@ export const s = StyleSheet.create({
     gap: 10,
     ...Platform.select({
       ios: {
-        paddingHorizontal: 50
+        paddingHorizontal: 50,
       },
       android: {
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
       },
-    })
+    }),
   },
   button: {
     width: '100%',

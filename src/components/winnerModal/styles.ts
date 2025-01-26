@@ -1,5 +1,5 @@
-import { colors } from "@/styles/colors";
-import { StyleSheet } from "react-native";
+import { colors } from '@/styles/colors'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 2
+    gap: 2,
   },
   buttonBack: {
     width: '50%',
@@ -59,5 +59,5 @@ export const styles = StyleSheet.create({
   buttonFinish: {
     width: '50%',
     borderColor: colors.green[300],
-  }
-});
+  },
+})

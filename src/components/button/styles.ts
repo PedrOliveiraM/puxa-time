@@ -41,5 +41,5 @@ export const s = StyleSheet.create({
     backgroundColor: colors.gray[600],
     borderColor: colors.gray[600],
     borderWidth: 1,
-  }
+  },
 })

@@ -1,5 +1,5 @@
-import { colors } from "@/styles/colors"
-import { StyleSheet } from "react-native"
+import { colors } from '@/styles/colors'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   card: {
@@ -22,15 +22,15 @@ export const styles = StyleSheet.create({
   },
   score: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   playersContainer: {
     marginBottom: 12,
   },
   playerRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 4,
   },
   skillIcon: {
@@ -44,11 +44,11 @@ export const styles = StyleSheet.create({
     color: colors.text.primary,
   },
   footer: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   scoreButtonContainer: {
-    flexDirection: "column",
-    alignItems: "center",
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   scoreButton: {
     backgroundColor: colors.gray[300],
@@ -58,11 +58,10 @@ export const styles = StyleSheet.create({
   },
   scoreButtonText: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   scoreText: {
     fontSize: 14,
     marginHorizontal: 4,
   },
 })
-

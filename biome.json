@@ -37,9 +37,6 @@
     }
   },
   "files": {
-    "ignore": [
-      "node_modules",
-      ".history"
-    ]
+    "ignore": ["node_modules", ".history"]
   }
 }

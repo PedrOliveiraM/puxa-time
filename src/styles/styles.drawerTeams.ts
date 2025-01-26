@@ -1,6 +1,6 @@
-import { Platform, StyleSheet } from "react-native"
-import { colors } from "./colors"
-import { fontFamily } from "./font-family"
+import { Platform, StyleSheet } from 'react-native'
+import { colors } from './colors'
+import { fontFamily } from './font-family'
 
 export const styles = StyleSheet.create({
   container: {
@@ -27,8 +27,8 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 10,
       },
       ios: {
-        paddingHorizontal: 50
-      }
+        paddingHorizontal: 50,
+      },
     }),
   },
   title: {
@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
   logo: {
     width: 180,
@@ -78,7 +78,7 @@ export const styles = StyleSheet.create({
       },
       ios: {
         paddingHorizontal: 50,
-      }
+      },
     }),
-  }
+  },
 })

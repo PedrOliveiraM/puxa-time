@@ -1,25 +1,25 @@
-import { ModeSort, ModeSortProps } from "@/types/IModeSort";
+import { ModeSort, ModeSortProps } from '@/types/IModeSort'
 import {
   IconArrowsShuffle,
   IconFlagFilled,
   IconFlameFilled,
   IconProps,
   IconStarFilled,
-} from '@tabler/icons-react-native';
+} from '@tabler/icons-react-native'
 
 export const modeSort: ModeSort = {
   RANDOM: 'ALEATÓRIO',
   ARRIVAL: 'CHEGADA',
   PRIORITY: 'PRIORIDADE',
   SKILL: 'HABILIDADE',
-};
+}
 
 export const modeSortIcons: Record<string, React.ComponentType<IconProps>> = {
   RANDOM: IconArrowsShuffle,
   ARRIVAL: IconFlagFilled,
   PRIORITY: IconStarFilled,
   SKILL: IconFlameFilled,
-};
+}
 
 export const modeSortArray: ModeSortProps[] = [
   {
@@ -50,4 +50,4 @@ export const modeSortArray: ModeSortProps[] = [
     label: modeSort.SKILL,
     icon: modeSortIcons.SKILL,
   },
-];
+]

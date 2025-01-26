@@ -35,7 +35,7 @@ export const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
   input: {
     backgroundColor: colors.input.background,
@@ -54,7 +54,7 @@ export const s = StyleSheet.create({
       },
       android: {
         maxHeight: 100,
-      }
+      },
     }),
     textAlignVertical: 'top',
   },
@@ -106,5 +106,5 @@ export const s = StyleSheet.create({
     height: 200,
     alignSelf: 'center',
     marginBottom: 20,
-  }
+  },
 })

@@ -1,5 +1,5 @@
-import { Player } from "./IPlayer"
-import { SkillLevel } from "./ISkill"
+import { Player } from './IPlayer'
+import { SkillLevel } from './ISkill'
 
 export interface SkillCardProps {
   item: Player

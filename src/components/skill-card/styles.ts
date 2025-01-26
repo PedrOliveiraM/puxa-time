@@ -1,6 +1,6 @@
-import { colors } from "@/styles/colors";
-import { fontFamily } from "@/styles/font-family";
-import { Platform, StyleSheet } from "react-native";
+import { colors } from '@/styles/colors'
+import { fontFamily } from '@/styles/font-family'
+import { Platform, StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
       },
       ios: {
         paddingHorizontal: 20,
-      }
+      },
     }),
     backgroundColor: colors.background,
   },
@@ -124,6 +124,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
-});
+})

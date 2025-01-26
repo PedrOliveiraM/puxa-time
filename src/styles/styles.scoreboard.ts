@@ -1,6 +1,6 @@
-import { Platform, StyleSheet } from "react-native";
-import { colors } from "./colors";
-import { fontFamily } from "./font-family";
+import { Platform, StyleSheet } from 'react-native'
+import { colors } from './colors'
+import { fontFamily } from './font-family'
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,8 +13,7 @@ export const styles = StyleSheet.create({
       ios: {
         paddingHorizontal: 20,
       },
-
-    })
+    }),
   },
   title: {
     fontSize: 26,
@@ -72,8 +71,8 @@ export const styles = StyleSheet.create({
       },
       ios: {
         paddingHorizontal: 40,
-      }
-    })
+      },
+    }),
   },
   logo: {
     width: 180,
@@ -114,8 +113,7 @@ export const styles = StyleSheet.create({
   },
   teamsContainer: {
     justifyContent: 'center', // Centraliza os itens horizontalmente
-    alignItems: 'center',    // Garante alinhamento vertical
-    paddingVertical: 16,     // Espaço ao redor dos cartões
+    alignItems: 'center', // Garante alinhamento vertical
+    paddingVertical: 16, // Espaço ao redor dos cartões
   },
-
 })

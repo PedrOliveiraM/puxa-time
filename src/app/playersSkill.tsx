@@ -10,7 +10,7 @@ import {
 } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useEffect } from 'react'
-import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, SafeAreaView, Text, View } from 'react-native'
 
 export default function PlayersSkill() {
   const { players, setPlayers } = useGame()

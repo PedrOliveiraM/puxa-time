@@ -1,6 +1,6 @@
-import { colors } from "@/styles/colors";
-import { fontFamily } from "@/styles/font-family";
-import { StyleSheet } from "react-native";
+import { colors } from '@/styles/colors'
+import { fontFamily } from '@/styles/font-family'
+import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   card: {
@@ -49,4 +49,4 @@ export const styles = StyleSheet.create({
     color: colors.text.primary,
     fontFamily: fontFamily.regular,
   },
-});
+})

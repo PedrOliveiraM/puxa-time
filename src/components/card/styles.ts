@@ -1,5 +1,5 @@
-import { colors } from "@/styles/colors";
-import { StyleSheet } from "react-native";
+import { colors } from '@/styles/colors'
+import { StyleSheet } from 'react-native'
 
 export const s = StyleSheet.create({
   container: {
@@ -29,5 +29,5 @@ export const s = StyleSheet.create({
   iconContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-  }
-});
+  },
+})

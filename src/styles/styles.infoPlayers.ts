@@ -33,7 +33,7 @@ export const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 10,
-    gap: 10
+    gap: 10,
   },
   label: {
     fontSize: 16,
