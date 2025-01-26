@@ -1,9 +1,11 @@
 import { Team } from '@/types/ITeams'
 import { IconArrowBackUp, IconCheck } from '@tabler/icons-react-native'
+import { router } from 'expo-router'
 import React from 'react'
-import { Alert, Image, Modal, Text, View } from 'react-native'
+import { Image, Modal, Text, View } from 'react-native'
 import ConfettiCannon from 'react-native-confetti-cannon'
 import { Button } from '../button'
+import { ModalTemplate } from '../modal'
 import { styles } from './styles'
 
 interface WinnerModalProps {
@@ -13,14 +15,14 @@ interface WinnerModalProps {
 }
 
 export function WinnerModal({ isVisible, setIsVisible, winnerTeams }: WinnerModalProps) {
+  const [isVisibleModal, setIsVisibleModal] = React.useState(false)
+
   const handleShowModal = () => {
-    Alert.alert('Finalizar Jogo', 'Deseja finalizar', [
-      { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Confirmar',
-        onPress: () => {},
-      },
-    ])
+    setIsVisibleModal(true)
+  }
+
+  const finishGame = () => {
+    router.replace('/')
   }
 
   return (
@@ -74,6 +76,16 @@ export function WinnerModal({ isVisible, setIsVisible, winnerTeams }: WinnerModa
               </View>
             </View>
           </View>
+          {isVisibleModal && (
+            <ModalTemplate
+              title="Finalizar Jogo"
+              description="Você realmente deseja finalizar o jogo?"
+              cancelText="Cancelar"
+              confirmText="Confirmar"
+              onConfirm={() => finishGame()}
+              onCancel={() => setIsVisibleModal(false)}
+            />
+          )}
         </Modal>
       )}
     </View>
