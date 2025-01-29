@@ -62,8 +62,17 @@ function Button({
   )
 }
 
-function Title({ children }: TextProps) {
-  return <Text style={s.title}>{children}</Text>
+function Title({
+  children,
+  style,
+  color = colors.gray[100],
+  ...rest
+}: TextProps & { color?: string }) {
+  return (
+    <Text style={[s.title, { color }, style]} {...rest}>
+      {children}
+    </Text>
+  )
 }
 
 Button.Title = Title

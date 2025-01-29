@@ -41,6 +41,7 @@ export const s = StyleSheet.create({
     backgroundColor: colors.input.background,
     borderRadius: 8,
     padding: 15,
+    paddingVertical: 20,
     marginBottom: 16,
     color: colors.input.text,
     width: '90%',
@@ -105,6 +106,8 @@ export const s = StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf: 'center',
-    marginBottom: 20,
   },
+  cleanbutton: {
+    color: colors.gray[700],
+  }
 })

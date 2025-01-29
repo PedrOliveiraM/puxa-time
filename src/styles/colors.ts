@@ -6,6 +6,7 @@ export const colors = {
     400: '#9E9E9E', // Texto secundário
     500: '#757575', // Texto de suporte
     600: '#616161', // Texto mais escuro
+    700: '#333333', // Texto principal
     800: '#424242', // Fundo escuro
     900: '#212121', // Texto escuro principal
     950: '#121212', // Fundo muito escuro

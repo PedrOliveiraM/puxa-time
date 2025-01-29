@@ -121,6 +121,7 @@ export default function PlayersScreen() {
             <View style={s.playerListContainer}>
               <Text style={s.label}>Lista de jogadores:</Text>
               <Button style={s.buttonPaste} onPress={handlePaste}>
+                <Button.Title>Colar</Button.Title>
                 <Button.Icon icon={IconClipboard} color="white" />
               </Button>
             </View>
@@ -161,7 +162,7 @@ export default function PlayersScreen() {
               </Button>
 
               <Button onPress={reset} variant="alert" style={s.button}>
-                <Button.Title>Limpar</Button.Title>
+                <Button.Title style={s.cleanbutton}>Limpar</Button.Title>
                 <Button.Icon icon={IconEraser} color="white" />
               </Button>
             </View>
