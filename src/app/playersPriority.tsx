@@ -73,8 +73,8 @@ export default function PlayersPriority() {
             </Button>
           )}
           <Button onPress={handleResetPlayers} variant="alert">
-            <Button.Title>Escolher Novamente</Button.Title>
-            <Button.Icon icon={IconRefresh} color="white" />
+            <Button.Title variant="alert">Escolher Novamente</Button.Title>
+            <Button.Icon icon={IconRefresh} variant="alert" />
           </Button>
         </View>
       </View>

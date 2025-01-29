@@ -106,7 +106,7 @@ export default function InfoTeams() {
               </Button>
 
               <Button onPress={reset} variant="alert" style={s.button}>
-                <Button.Title>Limpar</Button.Title>
+                <Button.Title variant="alert">Limpar</Button.Title>
                 <Button.Icon icon={IconEraser} color="white" />
               </Button>
             </View>

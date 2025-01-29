@@ -21,7 +21,7 @@ export const s = StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
   },
   footballIcon: {
     width: 32,

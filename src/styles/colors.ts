@@ -38,7 +38,7 @@ export const colors = {
   input: {
     background: '#2C3A4B',
     text: '#FFFFFF',
-    placeholder: '#9E9E9E',
+    placeholder: '#CCCCCC',
   },
   button: {
     primary: '#0D65D9',

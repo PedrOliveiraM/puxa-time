@@ -17,10 +17,28 @@ type ButtonProps = TouchableOpacityProps & {
 type IconProps = {
   icon: React.ComponentType<tablerIconsProps>
   color?: string
+  variant?: ButtonProps['variant']
 }
 
-function Icon({ icon: Icon, color }: IconProps) {
-  return <Icon size={24} color={color} />
+function Icon({ icon: Icon, color, variant = 'default' }: IconProps) {
+  const getIconColor = () => {
+    switch (variant) {
+      case 'success':
+        return colors.gray[100]
+      case 'alert':
+        return colors.gray[700]
+      case 'danger':
+        return colors.gray[100]
+      case 'disabled':
+        return colors.gray[100]
+      case 'outline':
+        return colors.gray[100]
+      default:
+        return colors.gray[100]
+    }
+  }
+
+  return <Icon size={24} color={color || getIconColor()} />
 }
 
 function Button({
@@ -65,11 +83,29 @@ function Button({
 function Title({
   children,
   style,
-  color = colors.gray[100],
+  color,
+  variant = 'default',
   ...rest
-}: TextProps & { color?: string }) {
+}: TextProps & { color?: string; variant?: ButtonProps['variant'] }) {
+  const getTitleColor = () => {
+    switch (variant) {
+      case 'success':
+        return colors.gray[100]
+      case 'alert':
+        return colors.gray[700]
+      case 'danger':
+        return colors.gray[100]
+      case 'disabled':
+        return colors.gray[100]
+      case 'outline':
+        return colors.gray[100]
+      default:
+        return colors.gray[100]
+    }
+  }
+
   return (
-    <Text style={[s.title, { color }, style]} {...rest}>
+    <Text style={[s.title, { color: color || getTitleColor() }, style]} {...rest}>
       {children}
     </Text>
   )
