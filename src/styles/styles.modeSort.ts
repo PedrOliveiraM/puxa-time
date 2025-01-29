@@ -59,7 +59,7 @@ export const s = StyleSheet.create({
     gap: 10,
     ...Platform.select({
       ios: {
-        paddingHorizontal: 50,
+        paddingHorizontal: 40,
       },
       android: {
         paddingHorizontal: 20,
@@ -67,7 +67,7 @@ export const s = StyleSheet.create({
     }),
   },
   button: {
-    width: '100%',
+    width: '90%',
   },
   flatContainer: {
     width: '100%',
