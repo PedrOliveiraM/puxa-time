@@ -11,6 +11,7 @@ export function HeaderBackButton() {
   return (
     <View style={s.container}>
       <Button style={s.button} onPress={() => router.back()}>
+        <Button.Title>Voltar</Button.Title>
         <Button.Icon icon={IconArrowBackUp} color={colors.gray[200]} />
       </Button>
 

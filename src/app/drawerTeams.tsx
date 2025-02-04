@@ -31,35 +31,14 @@ export default function DrawerTeams() {
     PRIORITY: drawTeamsByPriority,
   }
 
-  useEffect(() => {
-    getAllCapitains()
-    findAllCapitains()
-  }, [])
-
-  const getAllCapitains = () => {
-    console.log(
-      '1- useEffect: ',
-      captains.map(captains => captains.name)
-    )
-  }
-
-  const findAllCapitains = () => {
-    const captains = players.filter(player => player.isCaptain).map(player => player.name)
-
-    console.log('2- findAllCapitains:', captains)
-  }
-
   const handleSortTeams = () => {
     const sortFunction = sortFunctions[modeSort]
-    console.log('MODO DE SORTEIO: ', modeSort)
     if (sortFunction) {
       setTeam(sortFunction(players, numberOfTeams, playersPerTeam))
-      console.log('if - MODO DE SORTEIO: ', sortFunction)
       setIsVisible(true)
       return
     }
     setTeam(drawTeamsRandomly(players, numberOfTeams, playersPerTeam))
-    console.log('if - MODO DE SORTEIO DEFAULT: ', sortFunction)
     setIsVisible(true)
   }
 

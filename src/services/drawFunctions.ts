@@ -1,6 +1,7 @@
 import { Player } from '@/types/IPlayer'
 import { SkillLevel } from '@/types/ISkill'
 import { Team } from '@/types/ITeams'
+import { Alert } from 'react-native'
 // Função para embaralhar um array (para o sorteio aleatório)
 const shuffleArray = (array: Player[]): Player[] => {
   return [...array].sort(() => Math.random() - 0.5)
@@ -18,7 +19,6 @@ export const drawTeamsRandomly = (
 
   // Verifica se há capitães suficientes
   if (captains.length < numTeams) {
-    console.warn('Número insuficiente de capitães para os times.')
     return []
   }
 
@@ -47,7 +47,7 @@ export const drawTeamsRandomly = (
   // Valida se os times não excedem o limite de jogadores por time
   teams.forEach(team => {
     if (team.players.length > playersPerTeam) {
-      console.warn(`O time ${team.name} excedeu o limite de jogadores por time.`)
+      Alert.alert(`O time ${team.name} excedeu o limite de jogadores por time.`)
     }
   })
 
@@ -68,7 +68,6 @@ export const drawTeamsByArrival = (
 
   // Verifica se há capitães suficientes para os times
   if (captains.length !== numTeams) {
-    console.warn('Número insuficiente de capitães para os times.')
     return []
   }
 
@@ -101,7 +100,7 @@ export const drawTeamsByArrival = (
   // Emite um aviso se algum time exceder o limite de jogadores
   teams.forEach(team => {
     if (team.players.length > playersPerTeam) {
-      console.warn(`O time ${team.name} excedeu o limite de jogadores por time.`)
+      Alert.alert(`O time ${team.name} excedeu o limite de jogadores por time.`)
     }
   })
 
@@ -122,7 +121,6 @@ export const drawTeamsByPriority = (
 
   // Verifica se há capitães suficientes para os times
   if (captains.length !== numTeams) {
-    console.warn('Número insuficiente de capitães para os times.')
     return []
   }
 
@@ -165,7 +163,7 @@ export const drawTeamsByPriority = (
   // Emite um aviso caso algum time exceda o limite de jogadores
   teams.forEach(team => {
     if (team.players.length > playersPerTeam) {
-      console.warn(`O time ${team.name} excedeu o limite de jogadores por time.`)
+      Alert.alert(`O time ${team.name} excedeu o limite de jogadores por time.`)
     }
   })
 

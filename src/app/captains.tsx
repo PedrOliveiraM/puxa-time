@@ -4,7 +4,7 @@ import { styles } from '@/styles/styles.captains'
 import { IconArrowNarrowRightDashed } from '@tabler/icons-react-native'
 import { router } from 'expo-router'
 import React, { useState } from 'react'
-import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Captains() {
   const { settings, players, setCaptains, setPlayers } = useGame()
@@ -40,9 +40,9 @@ export default function Captains() {
     const selectedCaptains = updatedPlayers.filter(player => player.isCaptain)
 
     if (selectedCaptains.length !== numCaptainsRequired) {
-      console.warn(
-        'Número de capitães selecionados não corresponde ao esperado:',
-        selectedCaptains
+      Alert.alert(
+        'Ops',
+        `Número de capitães selecionados não corresponde ao esperado: ${selectedCaptains}`,
       )
       return
     }

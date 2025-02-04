@@ -40,8 +40,6 @@ export default function ModeSort() {
 
     if (route) {
       router.push(route)
-    } else {
-      console.warn('Modo de sorteio inválido:', selectedMode)
     }
   }
 

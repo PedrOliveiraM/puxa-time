@@ -33,7 +33,10 @@ export default function PlayersScreen() {
     const text = await Clipboard.getStringAsync()
 
     if (text === '') {
-      Alert.alert('Ops', 'Nenhum texto encontrado na área de transferência.')
+      Alert.alert(
+        'Ops',
+        'Você não tem nenhum texto copiado na área de transferência.Copie a lista de jogadores e tente novamente.'
+      )
       return
     }
 
