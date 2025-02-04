@@ -43,9 +43,6 @@ export default function InfoTeams() {
       modeSort: 'RANDOM',
     })
 
-    console.log('players', players)
-    console.log('numberOfTeams', numberOfTeams)
-    console.log('playersPerTeam', playersPerTeam)
 
     setTimeout(() => {
       setIsLoading(false)

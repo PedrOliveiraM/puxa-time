@@ -34,7 +34,6 @@ export default function PlayersSkill() {
 
   const handleSubmit = () => {
     router.push('/captains')
-    console.log('players:', players)
   }
 
   return (
