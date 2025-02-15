@@ -33,6 +33,8 @@ export default function DrawerTeams() {
 
   const handleSortTeams = () => {
     const sortFunction = sortFunctions[modeSort]
+    
+
     if (sortFunction) {
       setTeam(sortFunction(players, numberOfTeams, playersPerTeam))
       setIsVisible(true)

@@ -27,7 +27,6 @@ export const styles = StyleSheet.create({
   playerItem: {
     padding: 16,
     marginBottom: 8,
-    backgroundColor: colors.input.background,
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#ddd',
@@ -40,14 +39,13 @@ export const styles = StyleSheet.create({
     borderColor: colors.button.secondary,
   },
   playerText: {
-    fontSize: 18,
+    fontSize: 16,
     color: colors.text.primary,
     fontFamily: fontFamily.regular,
-    maxWidth: '60%', // Limita o tamanho máximo
-    overflow: 'hidden', // Garante que o conteúdo extra seja cortado
-    textOverflow: 'ellipsis', // Funciona com `numberOfLines`
+    width: 100, 
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
   },
-
   skillButtons: {
     flexDirection: 'row',
     gap: 5,
@@ -55,8 +53,6 @@ export const styles = StyleSheet.create({
   skillButton: {
     padding: 10,
     borderRadius: 8,
-    borderWidth: 1,
-    borderColor: colors.gray[300],
     backgroundColor: colors.input.background,
   },
   selectedSkillButton: {
@@ -91,8 +87,8 @@ export const styles = StyleSheet.create({
     gap: 10,
   },
   emoji: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     padding: 5,
   },
   selectedButton: {
@@ -105,8 +101,8 @@ export const styles = StyleSheet.create({
     gap: 5,
   },
   skillImage: {
-    width: 32,
-    height: 32,
+    width: 24,
+    height: 24,
     resizeMode: 'contain',
   },
   subTitle: {
@@ -125,5 +121,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingBottom: 10,
     gap: 10,
+  },
+  circle: {
+    width: 24, // Ajuste conforme necessário
+    height: 24, // Ajuste conforme necessário
+    borderRadius: 12, // Torna o círculo perfeitamente redondo
+    borderWidth: 2, // Espessura da borda
+    borderColor: '#ccc', // Cor da borda (ajuste conforme necessário)
+    backgroundColor: 'transparent', // Fundo transparente
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

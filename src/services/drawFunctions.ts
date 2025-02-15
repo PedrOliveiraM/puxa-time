@@ -169,16 +169,21 @@ export const drawTeamsByPriority = (
 
   return teams
 }
+
 // Função para calcular a pontuação de um time
 const calculateTeamScore = (team: Team): number => {
   return team.players.reduce((total, player) => {
     switch (player.skill) {
-      case 'Beginner':
+      case SkillLevel.Beginner:
         return total + 1
-      case 'Intermediate':
+      case SkillLevel.Intermediate:
         return total + 1.5
-      case 'Advanced':
+      case SkillLevel.Advanced:
         return total + 2
+      case SkillLevel.Expert:
+        return total + 3
+      case SkillLevel.Master:
+        return total + 4
       default:
         return total
     }
@@ -187,21 +192,30 @@ const calculateTeamScore = (team: Team): number => {
 
 // Função para rebalancear os times
 const rebalanceTeams = (teams: Team[], playersPerTeam: number): Team[] => {
-  // Ordena os times pela pontuação
-  teams.sort((a, b) => (a.score || 0) - (b.score || 0))
-
-  // Rebalanceamento iterativo para maior precisão
+  let attempts = 0
   let needRebalance = true
-  while (needRebalance) {
+
+  while (needRebalance && attempts < 3) {
     needRebalance = false
+    attempts++
+
+    // Ordena os times pela pontuação
+    teams.sort((a, b) => (a.score || 0) - (b.score || 0))
+
     // Encontrar os times com maior e menor pontuação
     const maxTeam = teams[teams.length - 1]
     const minTeam = teams[0]
 
     // Verificar se há necessidade de rebalanceamento
-    if (maxTeam && minTeam && Math.abs(maxTeam.score - minTeam.score) > 1) {
+    if (maxTeam && minTeam && Math.abs(maxTeam.score - minTeam.score) > 3) {
       // Tenta encontrar um jogador para trocar entre os times
-      for (const skill of ['Advanced', 'Intermediate', 'Beginner'] as SkillLevel[]) {
+      for (const skill of [
+        SkillLevel.Master,
+        SkillLevel.Expert,
+        SkillLevel.Advanced,
+        SkillLevel.Intermediate,
+        SkillLevel.Beginner,
+      ]) {
         const maxPlayerIndex = maxTeam.players.findIndex(player => player.skill === skill)
         const minPlayerIndex = minTeam.players.findIndex(player => player.skill === skill)
 
@@ -217,6 +231,14 @@ const rebalanceTeams = (teams: Team[], playersPerTeam: number): Team[] => {
           break
         }
       }
+    }
+
+    // Verifica se a diferença de pontuação está dentro do limite
+    const maxScore = teams[teams.length - 1].score || 0
+    const minScore = teams[0].score || 0
+
+    if (Math.abs(maxScore - minScore) <= 3) {
+      break
     }
   }
 
@@ -239,14 +261,20 @@ export const drawTeamsBySkill = (
 
   // Separa os jogadores por habilidade
   const skillLevels: { [key in SkillLevel]: Player[] } = {
-    Beginner: shuffleArray(
-      remainingPlayers.filter(player => player.skill === 'Beginner')
+    [SkillLevel.Beginner]: shuffleArray(
+      remainingPlayers.filter(player => player.skill === SkillLevel.Beginner)
     ),
-    Intermediate: shuffleArray(
-      remainingPlayers.filter(player => player.skill === 'Intermediate')
+    [SkillLevel.Intermediate]: shuffleArray(
+      remainingPlayers.filter(player => player.skill === SkillLevel.Intermediate)
     ),
-    Advanced: shuffleArray(
-      remainingPlayers.filter(player => player.skill === 'Advanced')
+    [SkillLevel.Advanced]: shuffleArray(
+      remainingPlayers.filter(player => player.skill === SkillLevel.Advanced)
+    ),
+    [SkillLevel.Expert]: shuffleArray(
+      remainingPlayers.filter(player => player.skill === SkillLevel.Expert)
+    ),
+    [SkillLevel.Master]: shuffleArray(
+      remainingPlayers.filter(player => player.skill === SkillLevel.Master)
     ),
   }
 
@@ -277,9 +305,11 @@ export const drawTeamsBySkill = (
   }
 
   // Distribui jogadores balanceadamente por habilidade
-  distributePlayers(skillLevels.Beginner, teams)
-  distributePlayers(skillLevels.Intermediate, teams)
-  distributePlayers(skillLevels.Advanced, teams)
+  distributePlayers(skillLevels[SkillLevel.Master], teams)
+  distributePlayers(skillLevels[SkillLevel.Expert], teams)
+  distributePlayers(skillLevels[SkillLevel.Advanced], teams)
+  distributePlayers(skillLevels[SkillLevel.Intermediate], teams)
+  distributePlayers(skillLevels[SkillLevel.Beginner], teams)
 
   teams.forEach(team => {
     team.score = calculateTeamScore(team)
