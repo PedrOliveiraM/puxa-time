@@ -61,12 +61,14 @@ Para rodar o **Puxa Time** em sua máquina, siga os passos abaixo:
 - Inicie a partida e utilize o placar para registrar os eventos do jogo.
 - Divirta-se com um sorteio justo e bem organizado!
 
+
+
 ## Fotos
-![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/main/assets/screenshot1.png)
-![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/main/assets/screenshot2.png)
-![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/main/assets/screenshot3.png)
-![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/main/assets/screenshot4.png)
-![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/main/assets/screenshot5.png)
+![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/master/assets/images/screenshot1.png)
+![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/master/assets/images/screenshot2.png)
+![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/master/assets/images/screenshot3.png)
+![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/master/assets/images/screenshot4.png)
+![Imagem do App](https://raw.githubusercontent.com/PedrOliveiraM/puxa-time/master/assets/images/screenshot5.png)
 
 ---
 ## Contato
