@@ -3,7 +3,7 @@
 O **Puxa Time** é um aplicativo desenvolvido em **React Native** para facilitar a formação de times de futebol de maneira rápida e justa. Com quatro modos de sorteio distintos, o app permite organizar partidas de maneira dinâmica, além de oferecer uma funcionalidade de placar para anotações durante os jogos.
 
 ## Tecnologias
-![Tecnologias](https://skillicons.dev/icons?i=react,typescript,expo,git)
+![Tecnologias](https://skillicons.dev/icons?i=react,typescript,git)
 
 ## Índice
 
